@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #1A5C3A;
+  --secondary: #D4A843;
+  --background: #FAFAF8;
+  --surface: #F8FAF5;
+  --on-surface: #191C19;
+  --outline: #707971;
+  --error: #BA1A1A;
+}
+
+@layer base {
+  body {
+    @apply bg-background font-body antialiased;
+    color: var(--on-surface);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-headline font-bold;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white rounded-2xl shadow-sm border border-surface-container overflow-hidden;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white px-4 py-2 rounded-full font-medium transition-all active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-white px-4 py-2 rounded-full font-medium transition-all active:scale-95;
+  }
+}

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700;800;900&amp;family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#707971",
+                    "primary": "#004326",
+                    "on-primary": "#ffffff",
+                    "surface-variant": "#e1e3de",
+                    "tertiary-fixed": "#e2e3e1",
+                    "on-surface": "#191c19",
+                    "inverse-on-surface": "#eff2ec",
+                    "surface-container-highest": "#e1e3de",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#c6c7c5",
+                    "tertiary": "#383a39",
+                    "surface-container": "#ecefe9",
+                    "surface-dim": "#d8dbd6",
+                    "error": "#ba1a1a",
+                    "outline-variant": "#c0c9bf",
+                    "on-secondary-fixed-variant": "#5b4300",
+                    "primary-fixed-dim": "#93d5aa",
+                    "surface-container-low": "#f2f4ef",
+                    "on-background": "#191c19",
+                    "on-surface-variant": "#404942",
+                    "surface": "#f8faf5",
+                    "on-primary-fixed-variant": "#0b5131",
+                    "on-tertiary-fixed": "#1a1c1b",
+                    "secondary": "#795900",
+                    "background": "#f8faf5",
+                    "on-tertiary-container": "#c3c4c2",
+                    "primary-fixed": "#aff2c4",
+                    "primary-container": "#1a5c3a",
+                    "on-tertiary": "#ffffff",
+                    "surface-bright": "#f8faf5",
+                    "on-tertiary-fixed-variant": "#454746",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed": "#261a00",
+                    "inverse-primary": "#93d5aa",
+                    "secondary-container": "#fece65",
+                    "surface-container-high": "#e6e9e4",
+                    "secondary-fixed": "#ffdf9f",
+                    "on-secondary": "#ffffff",
+                    "on-primary-container": "#91d2a7",
+                    "on-secondary-container": "#755700",
+                    "surface-tint": "#2a6a47",
+                    "tertiary-container": "#4f5150",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed": "#002110",
+                    "on-error": "#ffffff",
+                    "secondary-fixed-dim": "#eec058",
+                    "inverse-surface": "#2e312e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "gutter": "16px",
+                    "container-padding": "20px",
+                    "sm": "8px",
+                    "lg": "24px",
+                    "xl": "40px",
+                    "base": "4px",
+                    "md": "16px"
+            },
+            "fontFamily": {
+                    "h2": ["Epilogue"],
+                    "body-md": ["Be Vietnam Pro"],
+                    "h1": ["Epilogue"],
+                    "body-lg": ["Be Vietnam Pro"],
+                    "h3": ["Epilogue"],
+                    "label-sm": ["Be Vietnam Pro"],
+                    "price": ["Be Vietnam Pro"]
+            },
+            "fontSize": {
+                    "h2": ["24px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "h1": ["32px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "h3": ["20px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "1.0", "fontWeight": "600"}],
+                    "price": ["18px", {"lineHeight": "1.2", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #FAFAF8;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- NavigationDrawer (Sidebar) -->
+<aside class="hidden md:flex flex-col fixed h-full left-0 top-0 py-4 bg-white dark:bg-stone-950 w-64 border-r border-[#E8E8E4] dark:border-stone-800 z-50">
+<div class="font-epilogue text-xl font-black text-[#1A5C3A] dark:text-emerald-500 p-6 flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="restaurant">restaurant</span>
+            MenuAR
+        </div>
+<nav class="flex-1 space-y-1 px-2 mt-4">
+<!-- Active: Dashboard -->
+<a class="bg-[#1A5C3A] text-white flex items-center gap-3 px-4 py-3 rounded-lg mx-2 cursor-pointer transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-epilogue text-sm font-medium">Dashboard</span>
+</a>
+<a class="text-stone-600 dark:text-stone-400 hover:bg-stone-50 hover:pl-5 flex items-center gap-3 px-4 py-3 mx-2 rounded-lg cursor-pointer transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="edit_note">edit_note</span>
+<span class="font-epilogue text-sm font-medium">Menu Manager</span>
+</a>
+<a class="text-stone-600 dark:text-stone-400 hover:bg-stone-50 hover:pl-5 flex items-center gap-3 px-4 py-3 mx-2 rounded-lg cursor-pointer transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="pending_actions">pending_actions</span>
+<span class="font-epilogue text-sm font-medium">Live Orders</span>
+</a>
+<a class="text-stone-600 dark:text-stone-400 hover:bg-stone-50 hover:pl-5 flex items-center gap-3 px-4 py-3 mx-2 rounded-lg cursor-pointer transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="qr_code_2">qr_code_2</span>
+<span class="font-epilogue text-sm font-medium">Tables &amp; QR Codes</span>
+</a>
+<a class="text-stone-600 dark:text-stone-400 hover:bg-stone-50 hover:pl-5 flex items-center gap-3 px-4 py-3 mx-2 rounded-lg cursor-pointer transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+<span class="font-epilogue text-sm font-medium">Analytics</span>
+</a>
+<a class="text-stone-600 dark:text-stone-400 hover:bg-stone-50 hover:pl-5 flex items-center gap-3 px-4 py-3 mx-2 rounded-lg cursor-pointer transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-epilogue text-sm font-medium">Settings</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-[#E8E8E4] p-6">
+<div class="flex items-center gap-3">
+<img alt="Admin" class="w-10 h-10 rounded-full object-cover shadow-sm" data-alt="A professional headshot of a restaurant manager in a high-end safari lodge, wearing a clean linen shirt. The person has a warm, confident smile, captured in soft natural daylight that highlights his friendly features. The background is a slightly blurred upscale conservatory with lush green plants, maintaining a bright and premium light-mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2SEZj1tCUTkOgaAuB_D7IXFO_wxBEul01iT6HapUZaKj56CFzCm941uU2c5D1whRV9G5Jp8NfKVV7gbW7PI83dv4shbrTxdIhYabnuh4BUl9S-KT0ehbPju-od04dtNAVxX0rKcpf8F5MWcOYPNLuBUb1afCguu5B9SaAKr5hWmKDDYpoVSrLAh3ZqyGmxCqC-FKyoaqxleZDZSmz7W2QcBD6u9AL9GyaR3535nV5th7iRU0KluPPw64TtAdA36mIjedw6BWCpK7o"/>
+<div>
+<p class="font-epilogue font-bold text-sm text-[#1A5C3A]">The Savanna Grill</p>
+<p class="font-body-md text-xs text-stone-500">Admin Manager</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="md:ml-64 min-h-screen">
+<!-- TopAppBar -->
+<header class="h-20 flex items-center justify-between px-10 bg-[#FAFAF8] border-b border-[#E8E8E4] sticky top-0 z-40">
+<div>
+<h1 class="font-h1 text-h1 text-primary">Dashboard</h1>
+<p class="text-label-sm text-stone-500 uppercase tracking-widest mt-1">Thursday, October 24, 2024</p>
+</div>
+<div class="flex items-center gap-6">
+<button class="relative p-2 text-stone-600 hover:bg-stone-100 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-secondary rounded-full border-2 border-[#FAFAF8]"></span>
+</button>
+<button class="flex items-center gap-2 bg-primary text-on-primary px-6 py-2.5 rounded-lg font-epilogue font-semibold text-sm shadow-sm active:scale-95 transition-all">
+<span>Preview my menu</span>
+<span class="material-symbols-outlined text-sm" data-icon="north_east">north_east</span>
+</button>
+</div>
+</header>
+<div class="p-10 space-y-10">
+<!-- Metric Cards -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Orders -->
+<div class="bg-white p-6 rounded-xl border border-[#E8E8E4] shadow-[0px_4px_20px_rgba(0,0,0,0.04)]">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+</div>
+<span class="text-primary text-xs font-bold bg-primary/5 px-2 py-1 rounded">+12%</span>
+</div>
+<p class="text-stone-500 text-sm font-medium">Today's Orders</p>
+<h2 class="text-h1 font-h1 text-on-surface">24</h2>
+</div>
+<!-- Revenue -->
+<div class="bg-white p-6 rounded-xl border border-[#E8E8E4] shadow-[0px_4px_20px_rgba(0,0,0,0.04)]">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-secondary/10 rounded-lg text-secondary">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+</div>
+<span class="text-secondary text-xs font-bold bg-secondary/5 px-2 py-1 rounded">+8.4%</span>
+</div>
+<p class="text-stone-500 text-sm font-medium">Revenue</p>
+<h2 class="text-h1 font-h1 text-on-surface">$1,847</h2>
+</div>
+<!-- Tables -->
+<div class="bg-white p-6 rounded-xl border border-[#E8E8E4] shadow-[0px_4px_20px_rgba(0,0,0,0.04)]">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-stone-100 rounded-lg text-stone-600">
+<span class="material-symbols-outlined" data-icon="table_restaurant">table_restaurant</span>
+</div>
+</div>
+<p class="text-stone-500 text-sm font-medium">Active Tables</p>
+<h2 class="text-h1 font-h1 text-on-surface">8<span class="text-h3 text-stone-400 font-normal">/12</span></h2>
+</div>
+<!-- Top Dish -->
+<div class="bg-white p-6 rounded-xl border border-[#E8E8E4] shadow-[0px_4px_20px_rgba(0,0,0,0.04)]">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined" data-icon="star">star</span>
+</div>
+</div>
+<p class="text-stone-500 text-sm font-medium">Top Dish</p>
+<h2 class="text-h3 font-h3 text-on-surface leading-tight mt-1">Grilled Ribeye</h2>
+</div>
+</section>
+<!-- Bottom Content Grid -->
+<section class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+<!-- Live Orders Table (60%) -->
+<div class="lg:col-span-3 bg-white rounded-xl border border-[#E8E8E4] shadow-[0px_4px_20px_rgba(0,0,0,0.04)] overflow-hidden flex flex-col">
+<div class="p-6 border-b border-[#E8E8E4] flex justify-between items-center">
+<h3 class="font-h3 text-h3 text-on-surface">Live Orders</h3>
+<button class="text-primary text-sm font-bold flex items-center gap-1 hover:underline">
+                            View all <span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-surface text-stone-500 font-epilogue text-xs uppercase tracking-widest">
+<tr>
+<th class="px-6 py-4 font-semibold">Table</th>
+<th class="px-6 py-4 font-semibold">Items Summary</th>
+<th class="px-6 py-4 font-semibold text-right">Total</th>
+<th class="px-6 py-4 font-semibold">Status</th>
+<th class="px-6 py-4 font-semibold"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#F2F2F0]">
+<tr>
+<td class="px-6 py-5 font-bold text-primary">Table 04</td>
+<td class="px-6 py-5 text-sm text-stone-600">Grilled Ribeye, Caesar Salad...</td>
+<td class="px-6 py-5 text-sm font-bold text-right">$142.50</td>
+<td class="px-6 py-5">
+<span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase bg-amber-100 text-amber-700">Received</span>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="text-primary border border-primary px-3 py-1 rounded text-xs font-bold hover:bg-primary hover:text-white transition-colors">Manage</button>
+</td>
+</tr>
+<tr>
+<td class="px-6 py-5 font-bold text-primary">Table 11</td>
+<td class="px-6 py-5 text-sm text-stone-600">Wild Mushroom Risotto (x2)</td>
+<td class="px-6 py-5 text-sm font-bold text-right">$64.00</td>
+<td class="px-6 py-5">
+<span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase bg-blue-100 text-blue-700">Preparing</span>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="text-primary border border-primary px-3 py-1 rounded text-xs font-bold hover:bg-primary hover:text-white transition-colors">Manage</button>
+</td>
+</tr>
+<tr>
+<td class="px-6 py-5 font-bold text-primary">Table 02</td>
+<td class="px-6 py-5 text-sm text-stone-600">Safari Platter, Red Wine...</td>
+<td class="px-6 py-5 text-sm font-bold text-right">$210.30</td>
+<td class="px-6 py-5">
+<span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase bg-emerald-100 text-emerald-700">Ready</span>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="text-primary border border-primary px-3 py-1 rounded text-xs font-bold hover:bg-primary hover:text-white transition-colors">Manage</button>
+</td>
+</tr>
+<tr>
+<td class="px-6 py-5 font-bold text-primary">Table 07</td>
+<td class="px-6 py-5 text-sm text-stone-600">Ostrich Burger, Hand-cut Fries</td>
+<td class="px-6 py-5 text-sm font-bold text-right">$38.00</td>
+<td class="px-6 py-5">
+<span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase bg-blue-100 text-blue-700">Preparing</span>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="text-primary border border-primary px-3 py-1 rounded text-xs font-bold hover:bg-primary hover:text-white transition-colors">Manage</button>
+</td>
+</tr>
+<tr>
+<td class="px-6 py-5 font-bold text-primary">Table 05</td>
+<td class="px-6 py-5 text-sm text-stone-600">Tiger Prawn Skewers (x3)</td>
+<td class="px-6 py-5 text-sm font-bold text-right">$105.00</td>
+<td class="px-6 py-5">
+<span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase bg-amber-100 text-amber-700">Received</span>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="text-primary border border-primary px-3 py-1 rounded text-xs font-bold hover:bg-primary hover:text-white transition-colors">Manage</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Top Dishes (40%) -->
+<div class="lg:col-span-2 bg-white rounded-xl border border-[#E8E8E4] shadow-[0px_4px_20px_rgba(0,0,0,0.04)] p-6">
+<h3 class="font-h3 text-h3 text-on-surface mb-8">Top Dishes Today</h3>
+<div class="space-y-8">
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<span class="font-epilogue font-bold text-on-surface">Grilled Ribeye</span>
+<span class="text-stone-500 text-sm">42 orders</span>
+</div>
+<div class="w-full bg-stone-100 h-2.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 100%;"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<span class="font-epilogue font-bold text-on-surface">Wild Mushroom Risotto</span>
+<span class="text-stone-500 text-sm">31 orders</span>
+</div>
+<div class="w-full bg-stone-100 h-2.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 74%;"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<span class="font-epilogue font-bold text-on-surface">Safari Platter</span>
+<span class="text-stone-500 text-sm">28 orders</span>
+</div>
+<div class="w-full bg-stone-100 h-2.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 66%;"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<span class="font-epilogue font-bold text-on-surface">Tiger Prawn Skewers</span>
+<span class="text-stone-500 text-sm">22 orders</span>
+</div>
+<div class="w-full bg-stone-100 h-2.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 52%;"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<span class="font-epilogue font-bold text-on-surface">Ostrich Burger</span>
+<span class="text-stone-500 text-sm">18 orders</span>
+</div>
+<div class="w-full bg-stone-100 h-2.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 42%;"></div>
+</div>
+</div>
+</div>
+<div class="mt-12 bg-[#F2F2F0] p-6 rounded-xl text-center">
+<img alt="Featured Dish" class="w-full h-32 object-cover rounded-lg mb-4" data-alt="A high-resolution, gourmet photograph of a perfectly grilled ribeye steak served on a rustic stone plate. The meat is juicy with visible char marks, accompanied by a sprig of fresh rosemary and sea salt flakes. The lighting is warm and dramatic, highlighting the rich textures of the steak, captured in a premium safari lodge setting with soft bokeh of green foliage in the background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLzBJnDhtfzyYb9YjVyJE_mRcYLU7G1_OtOfvL_sqet8BmCoHeN2hoW6kZZ7bJToqf_FPF_hU1IVO0KpmwwMUHGLF2XYesSB2GaoojdTPoZyZtFOx4GcVVwIEvKOxkEWRD0somCNJwWuMCUfOVFbq2BRs-v6qzQQ3xrRKXwyJjaohvmlR1oeME0cR-8tzUciI74ZahAy-n6uKtQT2O8XQ5n9bHtlN7P75Mxawqtk9vSlL-4vpOCcZzMiywzKLwgO_8JUyp-Cp7ROUJ"/>
+<p class="text-label-sm text-secondary font-bold uppercase tracking-widest mb-1">Kitchen Recommendation</p>
+<p class="text-sm text-stone-600">Inventory for Ribeye is low. Suggest alternative mains to servers.</p>
+</div>
+</div>
+</section>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700;800;900&amp;family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#707971",
+                        "primary": "#004326",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#e1e3de",
+                        "tertiary-fixed": "#e2e3e1",
+                        "on-surface": "#191c19",
+                        "inverse-on-surface": "#eff2ec",
+                        "surface-container-highest": "#e1e3de",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#c6c7c5",
+                        "tertiary": "#383a39",
+                        "surface-container": "#ecefe9",
+                        "surface-dim": "#d8dbd6",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#c0c9bf",
+                        "on-secondary-fixed-variant": "#5b4300",
+                        "primary-fixed-dim": "#93d5aa",
+                        "surface-container-low": "#f2f4ef",
+                        "on-background": "#191c19",
+                        "on-surface-variant": "#404942",
+                        "surface": "#f8faf5",
+                        "on-primary-fixed-variant": "#0b5131",
+                        "on-tertiary-fixed": "#1a1c1b",
+                        "secondary": "#795900",
+                        "background": "#f8faf5",
+                        "on-tertiary-container": "#c3c4c2",
+                        "primary-fixed": "#aff2c4",
+                        "primary-container": "#1a5c3a",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#f8faf5",
+                        "on-tertiary-fixed-variant": "#454746",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#261a00",
+                        "inverse-primary": "#93d5aa",
+                        "secondary-container": "#fece65",
+                        "surface-container-high": "#e6e9e4",
+                        "secondary-fixed": "#ffdf9f",
+                        "on-secondary": "#ffffff",
+                        "on-primary-container": "#91d2a7",
+                        "on-secondary-container": "#755700",
+                        "surface-tint": "#2a6a47",
+                        "tertiary-container": "#4f5150",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed": "#002110",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#eec058",
+                        "inverse-surface": "#2e312e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "gutter": "16px",
+                        "container-padding": "20px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "xl": "40px",
+                        "base": "4px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "h2": ["Epilogue"],
+                        "body-md": ["Be Vietnam Pro"],
+                        "h1": ["Epilogue"],
+                        "body-lg": ["Be Vietnam Pro"],
+                        "h3": ["Epilogue"],
+                        "label-sm": ["Be Vietnam Pro"],
+                        "price": ["Be Vietnam Pro"]
+                    },
+                    "fontSize": {
+                        "h2": ["24px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "h1": ["32px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "h3": ["20px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "1.0", "fontWeight": "600"}],
+                        "price": ["18px", {"lineHeight": "1.2", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f8faf5; /* surface */
+            -webkit-tap-highlight-color: transparent;
+        }
+        .hero-gradient {
+            background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 30%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased">
+<!-- Hero Section -->
+<header class="relative w-full h-[397px] overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional food photography shot of a Grilled Ribeye Steak served on a dark ceramic plate. The steak is perfectly seared with cross-hatch grill marks, topped with vibrant green chimichurri sauce. It is accompanied by golden roasted baby potatoes and sautéed seasonal greens. The lighting is warm and dramatic, highlighting the textures of the meat in a luxury conservatory restaurant setting with soft forest green and gold accents in the background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLHsHqzJt4RVnOEDtZHe9vZeZ7CA5gCF1JMXUtUowlRHQFcc2mw9GrBxsZnAxAjE_MH9v_btl26F_NO5ZJgxUcXHn6IadJm6pXC40bGTSOIGQBiN4EWW_Efh2dIYDF-ZInI_PK95g-N_9VhC9sOpRfJW41kxXgdniGsGYXX9X8D78LoTqMKbShDEW9utvXpSCLYf79bVFzYIOytYNt8kP6Ugrzz5QwsDAYqb_4j7xKWdIxeeIRO5vhTf-kGXf-QS6O7P6hmoP6hPB_"/>
+<div class="absolute inset-0 hero-gradient"></div>
+<!-- Floating Back Button -->
+<button class="absolute top-6 left-5 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+</header>
+<!-- Content Sheet -->
+<main class="relative -mt-[30px] z-10">
+<div class="bg-white rounded-t-[20px] shadow-[0px_-4px_20px_rgba(0,0,0,0.04)] min-h-[530px] pb-32">
+<!-- Drag Handle -->
+<div class="w-full flex justify-center py-3">
+<div class="w-8 h-1 bg-stone-200 rounded-full"></div>
+</div>
+<!-- Dish Info -->
+<div class="px-container-padding mt-4">
+<div class="flex justify-between items-start mb-2">
+<h1 class="font-h2 text-h2 text-on-surface">Grilled Ribeye Steak</h1>
+<span class="font-price text-price text-primary">$34.00</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">
+                    300g prime cut served with chimichurri sauce, roasted baby potatoes and seasonal greens
+                </p>
+<!-- Badges & Calories -->
+<div class="flex flex-wrap items-center gap-2 mb-6">
+<span class="px-3 py-1 rounded-full border border-primary/20 text-primary font-label-sm text-label-sm bg-primary/10">
+                        Gluten-free
+                    </span>
+<span class="px-3 py-1 rounded-full border border-primary/20 text-primary font-label-sm text-label-sm bg-primary/10">
+                        Dairy-free
+                    </span>
+<div class="ml-auto flex items-center text-stone-400">
+<span class="material-symbols-outlined text-sm mr-1">local_fire_department</span>
+<span class="font-label-sm text-label-sm">680 kcal</span>
+</div>
+</div>
+<hr class="border-t border-stone-100 mb-8"/>
+<!-- Action Buttons -->
+<div class="flex flex-col gap-4">
+<!-- AR Button (Secondary Style with Gold) -->
+<button class="flex items-center justify-center gap-2 w-full h-14 bg-secondary-container text-on-secondary-container rounded-lg font-h3 text-h3 shadow-sm active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="view_in_ar">view_in_ar</span>
+                        Preview in AR
+                    </button>
+<!-- Add to Order Button (Primary Style) -->
+<button class="w-full h-14 bg-primary text-on-primary rounded-lg font-h3 text-h3 shadow-md active:opacity-90 transition-opacity">
+                        Add to Order
+                    </button>
+</div>
+<!-- Subtle Ingredients Section for Extra Quality -->
+<section class="mt-12">
+<h3 class="font-h3 text-h3 text-on-surface mb-4">Chef's Notes</h3>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-4 bg-surface rounded-xl border border-outline-variant/30">
+<span class="material-symbols-outlined text-secondary block mb-2">eco</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block mb-1">Source</span>
+<span class="font-body-md text-sm text-on-surface font-semibold">Grass-fed Angus</span>
+</div>
+<div class="p-4 bg-surface rounded-xl border border-outline-variant/30">
+<span class="material-symbols-outlined text-secondary block mb-2">temp_preferences_custom</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block mb-1">Grill</span>
+<span class="font-body-md text-sm text-on-surface font-semibold">Oak Wood Fired</span>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation (Shared Component) -->
+<!-- Determined active item as "Menu" since user is viewing dish details from the menu flow -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 h-20 pb-safe bg-white/90 backdrop-blur-md border-t border-stone-100 rounded-t-2xl shadow-[0px_-4px_20px_rgba(0,0,0,0.04)]">
+<a class="flex flex-col items-center justify-center text-[#1A5C3A] bg-[#1A5C3A]/10 rounded-xl px-3 py-1 scale-95 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="restaurant_menu">restaurant_menu</span>
+<span class="font-epilogue text-[10px] font-medium uppercase tracking-tighter">Menu</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 hover:text-[#1A5C3A] scale-95 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="view_in_ar">view_in_ar</span>
+<span class="font-epilogue text-[10px] font-medium uppercase tracking-tighter">AR View</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 hover:text-[#1A5C3A] scale-95 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+<span class="font-epilogue text-[10px] font-medium uppercase tracking-tighter">AI Chat</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 hover:text-[#1A5C3A] scale-95 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+<span class="font-epilogue text-[10px] font-medium uppercase tracking-tighter">Order</span>
+</a>
+</nav>
+</body></html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AR Dish Preview - The Savanna Grill</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700;800;900&amp;family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#707971",
+                        "primary": "#004326",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#e1e3de",
+                        "tertiary-fixed": "#e2e3e1",
+                        "on-surface": "#191c19",
+                        "inverse-on-surface": "#eff2ec",
+                        "surface-container-highest": "#e1e3de",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#c6c7c5",
+                        "tertiary": "#383a39",
+                        "surface-container": "#ecefe9",
+                        "surface-dim": "#d8dbd6",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#c0c9bf",
+                        "on-secondary-fixed-variant": "#5b4300",
+                        "primary-fixed-dim": "#93d5aa",
+                        "surface-container-low": "#f2f4ef",
+                        "on-background": "#191c19",
+                        "on-surface-variant": "#404942",
+                        "surface": "#f8faf5",
+                        "on-primary-fixed-variant": "#0b5131",
+                        "on-tertiary-fixed": "#1a1c1b",
+                        "secondary": "#795900",
+                        "background": "#f8faf5",
+                        "on-tertiary-container": "#c3c4c2",
+                        "primary-fixed": "#aff2c4",
+                        "primary-container": "#1a5c3a",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#f8faf5",
+                        "on-tertiary-fixed-variant": "#454746",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#261a00",
+                        "inverse-primary": "#93d5aa",
+                        "secondary-container": "#fece65",
+                        "surface-container-high": "#e6e9e4",
+                        "secondary-fixed": "#ffdf9f",
+                        "on-secondary": "#ffffff",
+                        "on-primary-container": "#91d2a7",
+                        "on-secondary-container": "#755700",
+                        "surface-tint": "#2a6a47",
+                        "tertiary-container": "#4f5150",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed": "#002110",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#eec058",
+                        "inverse-surface": "#2e312e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "gutter": "16px",
+                        "container-padding": "20px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "xl": "40px",
+                        "base": "4px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "h2": ["Epilogue"],
+                        "body-md": ["Be Vietnam Pro"],
+                        "h1": ["Epilogue"],
+                        "body-lg": ["Be Vietnam Pro"],
+                        "h3": ["Epilogue"],
+                        "label-sm": ["Be Vietnam Pro"],
+                        "price": ["Be Vietnam Pro"]
+                    },
+                    "fontSize": {
+                        "h2": ["24px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "h1": ["32px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "h3": ["20px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "1.0", "fontWeight": "600"}],
+                        "price": ["18px", {"lineHeight": "1.2", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .ar-view-container {
+            height: 100vh;
+            height: 100svh;
+            overflow: hidden;
+            position: relative;
+        }
+        .glass-pill {
+            background: rgba(25, 28, 25, 0.4);
+            backdrop-filter: blur(8px);
+        }
+        .bottom-sheet-shadow {
+            shadow-[0px_-4px_20px_rgba(0,0,0,0.04)];
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md overflow-hidden">
+<!-- AR Canvas / Camera Feed Container -->
+<main class="ar-view-container w-full bg-stone-900">
+<!-- Live Camera Feed Mock -->
+<div class="absolute inset-0 z-0">
+<img alt="Camera View" class="w-full h-full object-cover opacity-80" data-alt="A high-resolution, first-person perspective view of a rustic, dark-grained wooden restaurant table under soft, warm ambient lighting. The background shows a blurry, upscale conservatory-style dining room with lush greenery and elegant furniture. The overall mood is sophisticated and tactile, maintaining the premium safari lodge aesthetic with organic textures and natural depth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtGzJ1QhGGXZMrv3cOezJtnVF_I6ej8OAqE-uQ2ZnkW9X7FBYrpZx4rshvEWagp7tMmNXa4b5bbypyQymG86CFVZrmO9dT5FrKkxy30YG5qh1bNPS5D7c48Vx5qaZRj7Lo8dsyrtAFisaXo0o-8iFbGQ7UbXySWWRMK7WkirbiWzSC2gm1IQefqQ_bnH3EhC3djd87n_mbY2OkLKJTYegUWIQxkEYkxlCz99ZnvidUo7fitvQY1oMT5I4jZk1zf8ZKPvIjRkrex8oc"/>
+</div>
+<!-- 3D Model Asset (Simulated) -->
+<div class="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
+<div class="relative mb-20">
+<!-- Drop Shadow on Table -->
+<div class="absolute bottom-4 left-1/2 -translate-x-1/2 w-48 h-12 bg-black/30 blur-xl rounded-full"></div>
+<!-- Dish Image -->
+<img alt="Grilled Ribeye" class="w-64 h-64 object-cover rounded-full border-4 border-white/20 shadow-2xl relative z-10" data-alt="A beautifully plated 3D model of a juicy grilled ribeye steak resting on a minimalist white ceramic plate. The steak features perfect char marks and is accompanied by a sprig of fresh rosemary and golden-brown roasted potatoes. High-key lighting highlights the glistening texture of the meat, designed to look hyper-realistic as if physically sitting on a table in a luxury dining environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkozJWPTJ6nG0kUh5J5mImt1qhdrUrQzU-I-7Qtuf4N1sQ9gpFMaznw46W3irdl6rO4LwHe1f0SH35CwjAT3JPCH5H-NYJH0UPu8c22cqtbRz8Y_tUUuXxPmi-_DUFUJFU1zlEZCqFtwg0hXPSrsu85W-pu3_vlAsJoU7LIoOgSiT0C2QDOyFi05AUnY5f-k2ls5hwndt3uGR4ROGliJWPMXl5dl_4C7mKj_M1jydbSEPab3wjO1Vlv-aJ_7iRDWqvSDV_UMtQxuq-"/>
+</div>
+</div>
+<!-- AR HUD Controls -->
+<div class="absolute inset-0 z-20 pointer-events-none p-container-padding">
+<!-- Top Row -->
+<div class="flex justify-between items-start pt-sm">
+<button class="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-lg pointer-events-auto active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+</button>
+<div class="bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full flex items-center gap-2 border border-white shadow-sm">
+<div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+<span class="font-epilogue text-[10px] font-bold uppercase tracking-widest text-on-surface">AR LIVE</span>
+</div>
+</div>
+<!-- Contextual Instruction Pill -->
+<div class="absolute bottom-[42%] left-1/2 -translate-x-1/2">
+<div class="glass-pill px-4 py-2 rounded-full border border-white/10">
+<p class="text-white text-label-sm font-medium tracking-wide">Tap the table surface to place dish</p>
+</div>
+</div>
+</div>
+<!-- Bottom Sheet Interaction Area -->
+<div class="fixed bottom-0 left-0 w-full z-30 flex flex-col pointer-events-none">
+<!-- Semi-transparent gradient for readability -->
+<div class="h-16 w-full bg-gradient-to-t from-black/20 to-transparent"></div>
+<!-- The Sheet -->
+<div class="bg-white rounded-t-[20px] px-container-padding pb-xl pt-4 pointer-events-auto shadow-[0px_-4px_20px_rgba(0,0,0,0.06)] h-[335px]">
+<!-- Drag Handle -->
+<div class="w-8 h-1 bg-surface-variant rounded-full mx-auto mb-6"></div>
+<!-- Content Header -->
+<div class="flex justify-between items-start mb-1">
+<h2 class="font-h2 text-h2 text-on-surface">Grilled Ribeye Steak</h2>
+<span class="font-price text-price text-primary">$34.00</span>
+</div>
+<p class="text-on-surface-variant text-body-md mb-lg">300g prime cut · 680 kcal</p>
+<!-- Actions -->
+<div class="flex gap-md mb-gutter">
+<button class="flex-none w-14 h-14 rounded-lg border border-outline flex items-center justify-center text-primary hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined" data-icon="rotate_right">rotate_right</span>
+</button>
+<button class="flex-1 h-14 bg-primary text-on-primary rounded-lg font-epilogue font-bold text-body-md flex items-center justify-center gap-2 active:opacity-90 transition-opacity">
+<span class="material-symbols-outlined" data-icon="add_shopping_cart">add_shopping_cart</span>
+                        Add to Order
+                    </button>
+</div>
+<!-- Gestures Hint -->
+<div class="flex justify-center items-center gap-4">
+<div class="flex items-center gap-2 text-on-surface-variant/60">
+<span class="material-symbols-outlined text-[18px]">pinch</span>
+<span class="text-[11px] font-medium uppercase tracking-wider">Pinch to scale</span>
+</div>
+<div class="w-1 h-1 rounded-full bg-surface-variant"></div>
+<div class="flex items-center gap-2 text-on-surface-variant/60">
+<span class="material-symbols-outlined text-[18px]">swipe</span>
+<span class="text-[11px] font-medium uppercase tracking-wider">Drag to rotate</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Contextual Filter: Rendered as AR View is a top-level destination) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 h-20 pb-safe bg-white/90 dark:bg-stone-900/90 backdrop-blur-md border-t border-[#E8E8E4] dark:border-stone-800 shadow-[0px_-4px_20px_rgba(0,0,0,0.04)] rounded-t-2xl">
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 hover:text-[#1A5C3A] dark:hover:text-emerald-300 scale-95 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="restaurant_menu">restaurant_menu</span>
+<span class="font-epilogue text-[10px] font-medium uppercase tracking-tighter">Menu</span>
+</a>
+<!-- Active Tab: AR View -->
+<a class="flex flex-col items-center justify-center text-[#1A5C3A] dark:text-emerald-400 bg-[#1A5C3A]/10 rounded-xl px-3 py-1 scale-95 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="view_in_ar" style="font-variation-settings: 'FILL' 1;">view_in_ar</span>
+<span class="font-epilogue text-[10px] font-medium uppercase tracking-tighter">AR View</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 hover:text-[#1A5C3A] dark:hover:text-emerald-300 scale-95 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+<span class="font-epilogue text-[10px] font-medium uppercase tracking-tighter">AI Chat</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 hover:text-[#1A5C3A] dark:hover:text-emerald-300 scale-95 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+<span class="font-epilogue text-[10px] font-medium uppercase tracking-tighter">Order</span>
+</a>
+</nav>
+</body></html>

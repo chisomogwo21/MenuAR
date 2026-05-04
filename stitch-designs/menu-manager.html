@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700;800;900&amp;family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#707971",
+                    "primary": "#004326",
+                    "on-primary": "#ffffff",
+                    "surface-variant": "#e1e3de",
+                    "tertiary-fixed": "#e2e3e1",
+                    "on-surface": "#191c19",
+                    "inverse-on-surface": "#eff2ec",
+                    "surface-container-highest": "#e1e3de",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#c6c7c5",
+                    "tertiary": "#383a39",
+                    "surface-container": "#ecefe9",
+                    "surface-dim": "#d8dbd6",
+                    "error": "#ba1a1a",
+                    "outline-variant": "#c0c9bf",
+                    "on-secondary-fixed-variant": "#5b4300",
+                    "primary-fixed-dim": "#93d5aa",
+                    "surface-container-low": "#f2f4ef",
+                    "on-background": "#191c19",
+                    "on-surface-variant": "#404942",
+                    "surface": "#f8faf5",
+                    "on-primary-fixed-variant": "#0b5131",
+                    "on-tertiary-fixed": "#1a1c1b",
+                    "secondary": "#795900",
+                    "background": "#f8faf5",
+                    "on-tertiary-container": "#c3c4c2",
+                    "primary-fixed": "#aff2c4",
+                    "primary-container": "#1a5c3a",
+                    "on-tertiary": "#ffffff",
+                    "surface-bright": "#f8faf5",
+                    "on-tertiary-fixed-variant": "#454746",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed": "#261a00",
+                    "inverse-primary": "#93d5aa",
+                    "secondary-container": "#fece65",
+                    "surface-container-high": "#e6e9e4",
+                    "secondary-fixed": "#ffdf9f",
+                    "on-secondary": "#ffffff",
+                    "on-primary-container": "#91d2a7",
+                    "on-secondary-container": "#755700",
+                    "surface-tint": "#2a6a47",
+                    "tertiary-container": "#4f5150",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed": "#002110",
+                    "on-error": "#ffffff",
+                    "secondary-fixed-dim": "#eec058",
+                    "inverse-surface": "#2e312e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "gutter": "16px",
+                    "container-padding": "20px",
+                    "sm": "8px",
+                    "lg": "24px",
+                    "xl": "40px",
+                    "base": "4px",
+                    "md": "16px"
+            },
+            "fontFamily": {
+                    "h2": ["Epilogue"],
+                    "body-md": ["Be Vietnam Pro"],
+                    "h1": ["Epilogue"],
+                    "body-lg": ["Be Vietnam Pro"],
+                    "h3": ["Epilogue"],
+                    "label-sm": ["Be Vietnam Pro"],
+                    "price": ["Be Vietnam Pro"]
+            },
+            "fontSize": {
+                    "h2": ["24px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "h1": ["32px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "h3": ["20px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "1.0", "fontWeight": "600"}],
+                    "price": ["18px", {"lineHeight": "1.2", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        body {
+            background-color: #FAFAF8;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface selection:bg-primary-fixed-dim">
+<!-- NavigationDrawer (The Shell) -->
+<aside class="hidden md:flex flex-col fixed h-full left-0 top-0 py-4 w-64 border-r border-[#E8E8E4] bg-white z-50">
+<div class="font-epilogue text-xl font-black text-[#1A5C3A] p-6">
+            The Savanna Grill
+        </div>
+<div class="flex items-center px-6 py-4 mb-6">
+<img alt="Admin User" class="w-10 h-10 rounded-full border border-surface-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASEbPK5TjlyG-02T5pMy4QX5jihIo1gT-ezQQAfdLzMo2OzAjUEbBgqzM_1zMpuNsqRPEtnwQMSdm8njQ9Ylkugm78Ub2SywSryMGMyNZc2cu5q8bHEYP7jwMZEIIPcarYVKZiXYIxPXPOLmGu3hzS1OA6cGijc0HJ06n-UHzOtf_kRgoC58eO7yuVt3uPoZuTm8gDvQUKlZaEZNNGCtvgRn03Yadb8xWGAWSXcMAlJFIr1BxvT4QlGQ4Fge75q_PVwLUr6VV1a_1H"/>
+<div class="ml-3">
+<p class="font-epilogue text-sm font-bold text-on-surface">Savanna Admin</p>
+<p class="font-epilogue text-xs text-outline">Manager Level</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center px-4 py-3 mx-2 rounded-lg text-stone-600 hover:bg-stone-50 transition-all duration-300" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="dashboard">dashboard</span>
+<span class="font-epilogue text-sm font-medium">Dashboard</span>
+</a>
+<!-- Active State: Menu Manager -->
+<a class="flex items-center px-4 py-3 mx-2 rounded-lg bg-[#1A5C3A] text-white transition-all duration-300" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="edit_note">edit_note</span>
+<span class="font-epilogue text-sm font-medium">Menu Manager</span>
+</a>
+<a class="flex items-center px-4 py-3 mx-2 rounded-lg text-stone-600 hover:bg-stone-50 transition-all duration-300" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="qr_code_2">qr_code_2</span>
+<span class="font-epilogue text-sm font-medium">QR Tables</span>
+</a>
+<a class="flex items-center px-4 py-3 mx-2 rounded-lg text-stone-600 hover:bg-stone-50 transition-all duration-300" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="insights">insights</span>
+<span class="font-epilogue text-sm font-medium">Analytics</span>
+</a>
+</nav>
+<div class="px-6 py-4 border-t border-[#E8E8E4]">
+<button class="flex items-center text-stone-500 hover:text-error transition-colors">
+<span class="material-symbols-outlined mr-2" data-icon="logout">logout</span>
+<span class="font-epilogue text-sm font-medium">Sign Out</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-64 min-h-screen pb-24">
+<!-- Top Bar -->
+<header class="sticky top-0 z-40 bg-[#FAFAF8]/80 backdrop-blur-md flex items-center justify-between px-container-padding h-16 border-b border-[#E8E8E4]">
+<h1 class="font-h2 text-h2 text-primary">Menu Manager</h1>
+<button class="bg-primary text-on-primary px-4 py-2 rounded-lg flex items-center gap-2 shadow-sm active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[20px]" data-icon="add">add</span>
+<span class="font-label-sm">Add new item</span>
+</button>
+</header>
+<!-- Category Filters -->
+<div class="px-container-padding py-6 overflow-x-auto hide-scrollbar flex items-center gap-3">
+<button class="px-5 py-2 rounded-full bg-primary text-on-primary font-label-sm whitespace-nowrap">All</button>
+<button class="px-5 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-sm border border-outline-variant/30 whitespace-nowrap hover:bg-surface-variant transition-colors">Starters</button>
+<button class="px-5 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-sm border border-outline-variant/30 whitespace-nowrap hover:bg-surface-variant transition-colors">Mains</button>
+<button class="px-5 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-sm border border-outline-variant/30 whitespace-nowrap hover:bg-surface-variant transition-colors">Grills</button>
+<button class="px-5 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-sm border border-outline-variant/30 whitespace-nowrap hover:bg-surface-variant transition-colors">Desserts</button>
+<button class="px-5 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-sm border border-outline-variant/30 whitespace-nowrap hover:bg-surface-variant transition-colors">Drinks</button>
+</div>
+<!-- Menu Items Grid -->
+<div class="px-container-padding grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-lg">
+<!-- Item 1 -->
+<div class="bg-white rounded-xl border border-[#E8E8E4] overflow-hidden shadow-[0px_4px_20px_rgba(0,0,0,0.04)] hover:shadow-lg transition-shadow group">
+<div class="relative h-48 w-full overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A gourmet close-up of a charcoal-grilled ribeye steak resting on a wooden board, garnished with rosemary sprigs and sea salt. The lighting is moody and warm, highlighting the glistening texture of the meat and the rustic safari lodge atmosphere. The color palette is rich with deep browns, greens, and golden amber tones, conveying high-end culinary excellence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfb6RADwMLE8PGN4XpQXDwXj4aqaIGiB7WnwqWEOV_uU_8oMY7Glh9ZIB0foIhmKjcvv28Q6BgoJ5FLdjuakq-XUP2Ilp2HIG6kgLdEqYd-oOxOQi6Ki5dFTUBTbFywqRItYX6b9mQYdtUmlmNjEx_BTD2BwFcdxn4SE4oUPV8wRAM12szBOe8ISCZfTrUeCOjMQuVuWd3pRPlbSdyqLpW-y5mEX_cx77Fipw6xVIWAoUtgFpOUE8ZIE2rxUjIgfhFtO-b1Pjzvi96"/>
+<div class="absolute top-3 right-3 flex flex-col gap-2">
+<span class="bg-[#1A5C3A]/90 text-white text-[10px] font-bold px-2 py-1 rounded-full flex items-center gap-1 backdrop-blur-sm">
+<span class="material-symbols-outlined text-[12px]" data-icon="view_in_ar" data-weight="fill" style="font-variation-settings: 'FILL' 1;">view_in_ar</span>
+                            3D model ✓
+                        </span>
+</div>
+</div>
+<div class="p-md">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-h3 text-h3 text-primary">Savanna Ribeye</h3>
+<span class="font-price text-price text-secondary">$42.00</span>
+</div>
+<div class="flex items-center justify-between mt-6">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-outline">Available</span>
+<div class="w-10 h-5 bg-primary rounded-full relative cursor-pointer">
+<div class="absolute right-0.5 top-0.5 w-4 h-4 bg-white rounded-full"></div>
+</div>
+</div>
+<button class="px-4 py-1.5 border border-primary text-primary rounded-lg font-label-sm hover:bg-primary/5 transition-colors">Edit</button>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="bg-white rounded-xl border border-[#E8E8E4] overflow-hidden shadow-[0px_4px_20px_rgba(0,0,0,0.04)] hover:shadow-lg transition-shadow group">
+<div class="relative h-48 w-full overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Exquisitely plated roasted marrow bones served with toasted sourdough and a bright parsley salad in a sun-drenched conservatory setting. The image is bright and airy with soft shadows, emphasizing organic textures and clean lines. The aesthetic is minimalist yet luxurious, featuring natural wood and cream-colored ceramics." src="https://lh3.googleusercontent.com/aida-public/AB6AXuArCfcZwUWKDBeTZ5qcysUDAEYrd-ih3jiozgjQL0zx_omMusiSGZtaTw7051oai5vseHxv0ovuVjbQqaOXBtI2n73B-5V1-D2u4iQqGgz8tvuifA4Bm5csFvrGcUmSXAzw64Pf6soXPnVfZaCkgzbZ_ih2H8WsOJLXUTlXaVJP_jgO9Gs7E4TmNe9PIbfV5oxLcuTm6o0JFunRO5bCCEQNB7rW2j27eJRu3pmL-WoiYhZFtzYVSfPhvKetqubqIwfsjG0TRJ2pYgEx"/>
+</div>
+<div class="p-md">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-h3 text-h3 text-primary">Roasted Marrow</h3>
+<span class="font-price text-price text-secondary">$24.00</span>
+</div>
+<div class="flex items-center justify-between mt-6">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-outline">Available</span>
+<div class="w-10 h-5 bg-primary rounded-full relative cursor-pointer">
+<div class="absolute right-0.5 top-0.5 w-4 h-4 bg-white rounded-full"></div>
+</div>
+</div>
+<button class="px-4 py-1.5 border border-primary text-primary rounded-lg font-label-sm hover:bg-primary/5 transition-colors">Edit</button>
+</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="bg-white rounded-xl border border-[#E8E8E4] overflow-hidden shadow-[0px_4px_20px_rgba(0,0,0,0.04)] hover:shadow-lg transition-shadow group">
+<div class="relative h-48 w-full overflow-hidden opacity-80 grayscale-[0.3]">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A vibrant salad of grilled halloumi, charred peaches, and wild rocket drizzled with honey balsamic on a dark matte plate. The lighting is dramatic and focused, highlighting the contrast between the golden cheese and deep greens. The style is modern and sophisticated, suitable for a premium dining experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwHbg28X7QGQlZ15wpDTrwAST8wSgEinu71GhjQGyMxkcJh3xm3iptd9lLZbgQHqmUAq_OgvtYHgwbQqoVT9Jy51mfeCmu5TGS3GQR2vCKEYyYQ-ubueXT2DDmiHNsfMrs4ZpD7y2d7y-_5ma0thzk9s7Tc7tAKV-ToTv42I8mKJZgYA5IFQ6GX4_c2qKMjHhPg02jCbwtOP9kX50KqLEAMW1rrW298aCteSxY3LSTyT4AfAeJyq00_CyL7kDsQqViMROHbwcP9AHu"/>
+<div class="absolute inset-0 bg-white/20 flex items-center justify-center">
+<span class="bg-surface-variant/90 text-on-surface-variant font-label-sm px-3 py-1 rounded-full backdrop-blur-md">Sold Out</span>
+</div>
+</div>
+<div class="p-md">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-h3 text-h3 text-primary">Halloumi &amp; Peach</h3>
+<span class="font-price text-price text-secondary">$18.00</span>
+</div>
+<div class="flex items-center justify-between mt-6">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-outline">Available</span>
+<div class="w-10 h-5 bg-surface-variant rounded-full relative cursor-pointer">
+<div class="absolute left-0.5 top-0.5 w-4 h-4 bg-white rounded-full"></div>
+</div>
+</div>
+<button class="px-4 py-1.5 border border-primary text-primary rounded-lg font-label-sm hover:bg-primary/5 transition-colors">Edit</button>
+</div>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="bg-white rounded-xl border border-[#E8E8E4] overflow-hidden shadow-[0px_4px_20px_rgba(0,0,0,0.04)] hover:shadow-lg transition-shadow group">
+<div class="relative h-48 w-full overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A decadently rich chocolate fondant with a molten center, served with a scoop of Madagascan vanilla bean gelato on a golden metallic plate. Soft, warm candlelight flickers against the dark chocolate, creating an intimate and premium mood. The overall aesthetic is rich, warm, and indulgent." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4VmvUl9PYh7HG5f_QC0hq98Jyyw4TSGfvE4R6FmonBbNjNQwIWfN5S_bpvlhlCSmSSjePS8xDJS5HJlKeec16kswLYlZNjEOgJrX-A-L6sFhZ4RjG-BX_hoCt3KvtepS0WFdwwWEXKEPnOhtpx2_4dIi3ksM599J6FkykkRIrzhfsgmtuaUqUCryR4RY48wbVQZ1bTKxPZRznf9Ol_BzED9ZcxKL4JRssEi4afhuueR3fXpnFaXjN05PPCPx4rFY7HnxpyyByOc2E"/>
+<div class="absolute top-3 right-3">
+<span class="bg-[#1A5C3A]/90 text-white text-[10px] font-bold px-2 py-1 rounded-full flex items-center gap-1 backdrop-blur-sm">
+<span class="material-symbols-outlined text-[12px]" data-icon="view_in_ar" data-weight="fill" style="font-variation-settings: 'FILL' 1;">view_in_ar</span>
+                            3D model ✓
+                        </span>
+</div>
+</div>
+<div class="p-md">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-h3 text-h3 text-primary">Molten Lava</h3>
+<span class="font-price text-price text-secondary">$16.00</span>
+</div>
+<div class="flex items-center justify-between mt-6">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-outline">Available</span>
+<div class="w-10 h-5 bg-primary rounded-full relative cursor-pointer">
+<div class="absolute right-0.5 top-0.5 w-4 h-4 bg-white rounded-full"></div>
+</div>
+</div>
+<button class="px-4 py-1.5 border border-primary text-primary rounded-lg font-label-sm hover:bg-primary/5 transition-colors">Edit</button>
+</div>
+</div>
+</div>
+<!-- Item 5 -->
+<div class="bg-white rounded-xl border border-[#E8E8E4] overflow-hidden shadow-[0px_4px_20px_rgba(0,0,0,0.04)] hover:shadow-lg transition-shadow group">
+<div class="relative h-48 w-full overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A refreshing artisanal gin cocktail infused with botanical herbs and pink peppercorns, served in a heavy crystal glass. The scene is set in a bright, botanical-inspired outdoor terrace with soft dappled sunlight. The color palette features cool greens, clear glass, and subtle hints of botanical color." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaFsusiTJ3HEIHIPZvGMOeRI_Rwud4ZbLfaXOHmSUkFCD3OFwynAhqiVldh2lhsQU5KP0JLDqL35dZqsKMyATDM37gU_PYCOno3n-emMn2WX2vsbjdBRmlrtqdLlbwlY9UqW9TZDLPyF3laBNznyfkns1cu8v1QUfuacVUFB5x4j2ca5YcNCZTY0JffbARCQP9--bUzfLvBwROryr_b3EZbDqH8I2r6nAb3AVxtqUAOS0TvuaoTqAO0SO7yDqXkEqL28Y2NS9RhPPS"/>
+</div>
+<div class="p-md">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-h3 text-h3 text-primary">Botanical Gin</h3>
+<span class="font-price text-price text-secondary">$14.00</span>
+</div>
+<div class="flex items-center justify-between mt-6">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-outline">Available</span>
+<div class="w-10 h-5 bg-primary rounded-full relative cursor-pointer">
+<div class="absolute right-0.5 top-0.5 w-4 h-4 bg-white rounded-full"></div>
+</div>
+</div>
+<button class="px-4 py-1.5 border border-primary text-primary rounded-lg font-label-sm hover:bg-primary/5 transition-colors">Edit</button>
+</div>
+</div>
+</div>
+<!-- Item 6 -->
+<div class="bg-white rounded-xl border border-[#E8E8E4] overflow-hidden shadow-[0px_4px_20px_rgba(0,0,0,0.04)] hover:shadow-lg transition-shadow group">
+<div class="relative h-48 w-full overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A gourmet wagyu beef burger topped with truffle aioli and aged cheddar, served in a brioche bun with a side of hand-cut fries. The lighting is crisp and detailed, showcasing the high-quality ingredients and modern presentation. The background is a clean, minimalist restaurant kitchen with industrial accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhPzXJAdGkHYr6T2Mo9A1k7Z4rfbqBCn5IpCv2I_uMHd-i-zsbAQmWZoS0GRmvPsD_5iQ9tRZlvob9BsIL-AuEphRt_w2lpUcL8EDi2s588AgcupBv9doa6D6NmYjS4b3CGgzmH6vmen2ih3xkAN7Aw7cbq6Tu7Quyc_9bzsUlHie-B2rlvAP10glm8HIXC7ya31yrngN0JMriI_aJzjLrckE5_TUuBNxVUTBSFbx58EziikUL5oAHWQCTMqJOLQasjUidlChc3P8k"/>
+<div class="absolute top-3 right-3">
+<span class="bg-[#1A5C3A]/90 text-white text-[10px] font-bold px-2 py-1 rounded-full flex items-center gap-1 backdrop-blur-sm">
+<span class="material-symbols-outlined text-[12px]" data-icon="view_in_ar" data-weight="fill" style="font-variation-settings: 'FILL' 1;">view_in_ar</span>
+                            3D model ✓
+                        </span>
+</div>
+</div>
+<div class="p-md">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-h3 text-h3 text-primary">Wild Wagyu</h3>
+<span class="font-price text-price text-secondary">$32.00</span>
+</div>
+<div class="flex items-center justify-between mt-6">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-outline">Available</span>
+<div class="w-10 h-5 bg-primary rounded-full relative cursor-pointer">
+<div class="absolute right-0.5 top-0.5 w-4 h-4 bg-white rounded-full"></div>
+</div>
+</div>
+<button class="px-4 py-1.5 border border-primary text-primary rounded-lg font-label-sm hover:bg-primary/5 transition-colors">Edit</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile View) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 h-20 pb-safe bg-white/90 backdrop-blur-md border-t border-[#E8E8E4] shadow-[0px_-4px_20px_rgba(0,0,0,0.04)] rounded-t-2xl">
+<a class="flex flex-col items-center justify-center text-stone-400" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="restaurant_menu">restaurant_menu</span>
+<span class="font-epilogue text-[10px] font-medium uppercase tracking-tighter">Menu</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="view_in_ar">view_in_ar</span>
+<span class="font-epilogue text-[10px] font-medium uppercase tracking-tighter">AR View</span>
+</a>
+<!-- This represents "Menu Manager" effectively as active destination on mobile shell -->
+<a class="flex flex-col items-center justify-center text-[#1A5C3A] bg-[#1A5C3A]/10 rounded-xl px-3 py-1 scale-95 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="smart_toy">smart_toy</span>
+<span class="font-epilogue text-[10px] font-medium uppercase tracking-tighter">AI Chat</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="shopping_bag">shopping_bag</span>
+<span class="font-epilogue text-[10px] font-medium uppercase tracking-tighter">Order</span>
+</a>
+</nav>
+<!-- FAB for adding items on mobile -->
+<button class="md:hidden fixed bottom-24 right-6 w-14 h-14 bg-primary text-on-primary rounded-full flex items-center justify-center shadow-lg active:scale-90 transition-transform z-40">
+<span class="material-symbols-outlined text-[28px]" data-icon="add">add</span>
+</button>
+</body></html>

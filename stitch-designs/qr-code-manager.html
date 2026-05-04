@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700;800;900&amp;family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#707971",
+                        "primary": "#004326",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#e1e3de",
+                        "tertiary-fixed": "#e2e3e1",
+                        "on-surface": "#191c19",
+                        "inverse-on-surface": "#eff2ec",
+                        "surface-container-highest": "#e1e3de",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#c6c7c5",
+                        "tertiary": "#383a39",
+                        "surface-container": "#ecefe9",
+                        "surface-dim": "#d8dbd6",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#c0c9bf",
+                        "on-secondary-fixed-variant": "#5b4300",
+                        "primary-fixed-dim": "#93d5aa",
+                        "surface-container-low": "#f2f4ef",
+                        "on-background": "#191c19",
+                        "on-surface-variant": "#404942",
+                        "surface": "#f8faf5",
+                        "on-primary-fixed-variant": "#0b5131",
+                        "on-tertiary-fixed": "#1a1c1b",
+                        "secondary": "#795900",
+                        "background": "#f8faf5",
+                        "on-tertiary-container": "#c3c4c2",
+                        "primary-fixed": "#aff2c4",
+                        "primary-container": "#1a5c3a",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#f8faf5",
+                        "on-tertiary-fixed-variant": "#454746",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#261a00",
+                        "inverse-primary": "#93d5aa",
+                        "secondary-container": "#fece65",
+                        "surface-container-high": "#e6e9e4",
+                        "secondary-fixed": "#ffdf9f",
+                        "on-secondary": "#ffffff",
+                        "on-primary-container": "#91d2a7",
+                        "on-secondary-container": "#755700",
+                        "surface-tint": "#2a6a47",
+                        "tertiary-container": "#4f5150",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed": "#002110",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#eec058",
+                        "inverse-surface": "#2e312e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "gutter": "16px",
+                        "container-padding": "20px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "xl": "40px",
+                        "base": "4px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "h2": ["Epilogue"],
+                        "body-md": ["Be Vietnam Pro"],
+                        "h1": ["Epilogue"],
+                        "body-lg": ["Be Vietnam Pro"],
+                        "h3": ["Epilogue"],
+                        "label-sm": ["Be Vietnam Pro"],
+                        "price": ["Be Vietnam Pro"]
+                    },
+                    "fontSize": {
+                        "h2": ["24px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "h1": ["32px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "h3": ["20px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "1.0", "fontWeight": "600"}],
+                        "price": ["18px", {"lineHeight": "1.2", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f8faf5;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- Navigation Drawer (SideNav) -->
+<aside class="hidden md:flex flex-col fixed h-full left-0 top-0 py-4 w-64 bg-white border-r border-[#E8E8E4] z-50">
+<div class="font-epilogue text-xl font-black text-[#1A5C3A] p-6">
+            The Savanna Grill
+        </div>
+<div class="flex items-center px-6 py-4 mb-4">
+<div class="w-10 h-10 rounded-full bg-surface-container overflow-hidden">
+<img alt="Admin Profile" class="w-full h-full object-cover" data-alt="A professional portrait of a restaurant manager in a refined, minimalist safari-inspired lodge. The setting features soft ambient lighting, warm wood textures, and a clean, high-end atmosphere. The manager exudes confidence and warmth, fitting for a Michelin-starred establishment focused on meticulous service." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2EBeHvGX1der13EuU1d0cLdkvFjtpC4ZlpiUnRyA3H0qEDY7LujHRNR8zfO50FsDBH5NO3YQdxBuDnacC7a6pZItcM2iqre4nKRqMOXoWvaXYIYBVm1Z0mOfHnk9ltqi9tjX9IeSs4EEgwoFlA7dVe8nL9-0NUIr-x9jJeIPgbutPyATi_aCvWcw45QfurfBph9ZG0SEvyD0GXQyoi3ZKZtUmL4X_w5DY-r3XRv7VG6zGOYQOhpMW2gJXaWsbVy8Kf4F81mT5UBUF"/>
+</div>
+<div class="ml-3">
+<p class="font-epilogue text-sm font-bold text-on-surface">Savanna Admin</p>
+<p class="font-body-md text-xs text-on-surface-variant">Manager Level</p>
+</div>
+</div>
+<nav class="flex-1 px-2 space-y-1">
+<a class="flex items-center px-4 py-3 text-stone-600 hover:bg-stone-50 rounded-lg transition-all duration-300" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="dashboard">dashboard</span>
+<span class="font-epilogue text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center px-4 py-3 text-stone-600 hover:bg-stone-50 rounded-lg transition-all duration-300" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="edit_note">edit_note</span>
+<span class="font-epilogue text-sm font-medium">Menu Manager</span>
+</a>
+<a class="flex items-center px-4 py-3 bg-[#1A5C3A] text-white rounded-lg transition-all duration-300" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="qr_code_2" style="font-variation-settings: 'FILL' 1;">qr_code_2</span>
+<span class="font-epilogue text-sm font-medium">QR Tables</span>
+</a>
+<a class="flex items-center px-4 py-3 text-stone-600 hover:bg-stone-50 rounded-lg transition-all duration-300" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="insights">insights</span>
+<span class="font-epilogue text-sm font-medium">Analytics</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<main class="md:ml-64 min-h-screen">
+<!-- Top App Bar -->
+<header class="sticky top-0 w-full z-40 bg-[#FAFAF8] flex items-center justify-between px-5 h-16 border-b border-[#E8E8E4] shadow-[0px_4px_20px_rgba(0,0,0,0.04)]">
+<div class="flex items-center gap-4">
+<button class="md:hidden text-[#1A5C3A]">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-epilogue font-semibold text-h2 text-primary">Tables &amp; QR Codes</h1>
+</div>
+<button class="flex items-center gap-2 bg-primary text-on-primary px-4 py-2 rounded-lg font-epilogue text-sm font-bold shadow-sm active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                Add table
+            </button>
+</header>
+<!-- Canvas / Content -->
+<div class="p-container-padding max-w-7xl mx-auto py-xl">
+<!-- Summary Bar (Optional Aesthetic Touch) -->
+<div class="flex flex-col md:flex-row md:items-center justify-between mb-lg gap-4">
+<div>
+<h2 class="font-h3 text-primary mb-1">Generate Guest Access</h2>
+<p class="text-on-surface-variant font-body-md">Manage table availability and generate unique dining QR codes.</p>
+</div>
+<div class="flex items-center gap-3">
+<span class="flex items-center gap-1.5 px-3 py-1.5 bg-[#1A5C3A]/10 text-primary rounded-full text-label-sm uppercase">
+<span class="w-2 h-2 bg-primary rounded-full"></span>
+                        8 Tables Active
+                    </span>
+<span class="flex items-center gap-1.5 px-3 py-1.5 bg-tertiary-fixed text-on-tertiary-fixed-variant rounded-full text-label-sm uppercase">
+<span class="w-2 h-2 bg-outline-variant rounded-full"></span>
+                        0 Inactive
+                    </span>
+</div>
+</div>
+<!-- QR Code Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-lg">
+<!-- Table Card 1 -->
+<div class="bg-white rounded-xl border border-[#E8E8E4] p-md shadow-[0px_4px_20px_rgba(0,0,0,0.04)] hover:shadow-md transition-shadow group">
+<div class="relative aspect-square mb-md bg-surface-container-low rounded-lg overflow-hidden flex items-center justify-center p-lg">
+<div class="absolute top-2 right-2 flex items-center gap-1 px-2 py-1 bg-white/90 backdrop-blur rounded-full shadow-sm">
+<span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+<span class="text-[10px] font-bold text-primary uppercase">Active</span>
+</div>
+<img alt="QR Code Table 1" class="w-full h-full object-contain mix-blend-multiply opacity-90 group-hover:scale-105 transition-transform" data-alt="A clean, high-contrast QR code centered on a high-quality white paper texture, representing a digital access point for a restaurant table. The background is softly out of focus, suggesting a modern, upscale conservatory-style dining room with natural light and hints of lush green foliage. The aesthetic is professional, minimalist, and secure." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDVQ-xgkVYb1xyljlCVolwFX8jPSMGIHHmmo89eg3MlHsgVBJreRp42d07FWCEuerP10jXq1D0qKu5rWg1Mvwg24ncVTQX6YaD6b2PxDZMh-ZDrJ5lnblusskvMTcLumEwL9j-8Uk1vGL2mDJsewBriRe-agB_Yz2nMWpEsBvMPMdloDuRXYrAehvRHmKXEzmDZbVBVjHBTMXKZ4lT1N4pFRXpO1wm6f4GDA1strvJ_oB-y9MlY0MMRTuXHQA9x89FXoWbfFUWRLr6"/>
+</div>
+<div class="text-center">
+<h3 class="font-h3 text-on-surface mb-xs">Table 1</h3>
+<p class="text-label-sm text-on-surface-variant mb-md uppercase tracking-widest">Main Dining Room</p>
+<button class="w-full flex items-center justify-center gap-2 border border-primary text-primary px-4 py-2.5 rounded-lg font-epilogue text-sm font-semibold hover:bg-primary/5 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-base" data-icon="download">download</span>
+                            Download PNG
+                        </button>
+</div>
+</div>
+<!-- Table Card 2 -->
+<div class="bg-white rounded-xl border border-[#E8E8E4] p-md shadow-[0px_4px_20px_rgba(0,0,0,0.04)] hover:shadow-md transition-shadow group">
+<div class="relative aspect-square mb-md bg-surface-container-low rounded-lg overflow-hidden flex items-center justify-center p-lg">
+<div class="absolute top-2 right-2 flex items-center gap-1 px-2 py-1 bg-white/90 backdrop-blur rounded-full shadow-sm">
+<span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+<span class="text-[10px] font-bold text-primary uppercase">Active</span>
+</div>
+<img alt="QR Code Table 2" class="w-full h-full object-contain mix-blend-multiply opacity-90 group-hover:scale-105 transition-transform" data-alt="A minimalist QR code displayed on a clean white surface with elegant typography beneath. The lighting is soft and bright, echoing a conservatory or a high-end botanical-themed restaurant. The composition is centered and balanced, emphasizing technology integrated seamlessly into a premium hospitality environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgEayyRdqyRL9tWoTLzqeK3XQeWmwHIQOz2x1jkfKdqUO8lXqbjqfBPAyKG3orXPTcd3Sabdhz-1MSQPgH60tRtSAD4nAK3hK7-c-DnQxeAnOINYaBzbSNZVl_ki9nokd3bj4QRy9MV08zNhO7m6_f1K4PooUoefZdCx1eUi7bZSfZukRLpAfqDXA8lqr-LNQtPteNZzU9gICF2tKGDOgfcT2vvKFmYb13-EbbODElBwYwgt3zSH8Wk40665RrGtih_DKkue-jTThD"/>
+</div>
+<div class="text-center">
+<h3 class="font-h3 text-on-surface mb-xs">Table 2</h3>
+<p class="text-label-sm text-on-surface-variant mb-md uppercase tracking-widest">Window Seating</p>
+<button class="w-full flex items-center justify-center gap-2 border border-primary text-primary px-4 py-2.5 rounded-lg font-epilogue text-sm font-semibold hover:bg-primary/5 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-base" data-icon="download">download</span>
+                            Download PNG
+                        </button>
+</div>
+</div>
+<!-- Table Card 3 -->
+<div class="bg-white rounded-xl border border-[#E8E8E4] p-md shadow-[0px_4px_20px_rgba(0,0,0,0.04)] hover:shadow-md transition-shadow group">
+<div class="relative aspect-square mb-md bg-surface-container-low rounded-lg overflow-hidden flex items-center justify-center p-lg">
+<div class="absolute top-2 right-2 flex items-center gap-1 px-2 py-1 bg-white/90 backdrop-blur rounded-full shadow-sm">
+<span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+<span class="text-[10px] font-bold text-primary uppercase">Active</span>
+</div>
+<img alt="QR Code Table 3" class="w-full h-full object-contain mix-blend-multiply opacity-90 group-hover:scale-105 transition-transform" data-alt="A crisp, modern QR code designed for high-end restaurant use. The scene is bright and airy, with soft shadows and a warm parchment-toned background. The visual style reflects a blend of traditional elegance and modern convenience, with a focus on clean lines and a premium, calm mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGwsSlpZ0r6dQPuJXNMu1uY_fVYfgqQDbfIA2wa78dN0GGZ_f4luP0aooEG6tihp9W5zY_AmNzCm8voToP_rcztw6Tn9Y0cgvNAI2gtlv6pH47q2q8BjVDiLvolQpLsGfxcGGQ0h7XxPGIWgLmYv6ELTCgm0CyEveqoyxUiquhd9fuQE9T_QAMobMvzu540yeSH7Ouezi2IbL02bJoxuTtux-Dog6n-ZqfTu6teBtGEp2hiUCUUtKcOYPGh4GhV0yGfyYSj7w6Ueya"/>
+</div>
+<div class="text-center">
+<h3 class="font-h3 text-on-surface mb-xs">Table 3</h3>
+<p class="text-label-sm text-on-surface-variant mb-md uppercase tracking-widest">Patio Area</p>
+<button class="w-full flex items-center justify-center gap-2 border border-primary text-primary px-4 py-2.5 rounded-lg font-epilogue text-sm font-semibold hover:bg-primary/5 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-base" data-icon="download">download</span>
+                            Download PNG
+                        </button>
+</div>
+</div>
+<!-- Table Card 4 -->
+<div class="bg-white rounded-xl border border-[#E8E8E4] p-md shadow-[0px_4px_20px_rgba(0,0,0,0.04)] hover:shadow-md transition-shadow group">
+<div class="relative aspect-square mb-md bg-surface-container-low rounded-lg overflow-hidden flex items-center justify-center p-lg">
+<div class="absolute top-2 right-2 flex items-center gap-1 px-2 py-1 bg-white/90 backdrop-blur rounded-full shadow-sm">
+<span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+<span class="text-[10px] font-bold text-primary uppercase">Active</span>
+</div>
+<img alt="QR Code Table 4" class="w-full h-full object-contain mix-blend-multiply opacity-90 group-hover:scale-105 transition-transform" data-alt="An elegant QR code setup for a private dining table in a safari lodge setting. The image is bright with high-key lighting, emphasizing white space and organic textures. The overall atmosphere is quiet, intentional, and premium, suggesting a seamless digital ordering experience in a luxury environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXsAWqzYxu9-qWvfjcAvCQASbX3csZxQiLv5Qu2cDRDm_brqFRoL1ZrTVGs1d9EEDVPlH976z-1VC2fOlgfLM9S3spv421_kKJR6fOZ4jyQ8MaUFlZdIYPotLaF5zcy1UKFcAgE9DyVFotslfcT5KYJtF-H5gGeS43oz88_ueAiGlVuz8zZ0lww7kf5O2LkmOX64EpUv9GkRSkIbn7RNpjjiGGUGD_OjPJamWKlpaFyiEAHTqDaJaNUowsCvbGLR_CxSG35U187AFS"/>
+</div>
+<div class="text-center">
+<h3 class="font-h3 text-on-surface mb-xs">Table 4</h3>
+<p class="text-label-sm text-on-surface-variant mb-md uppercase tracking-widest">Lounge Corner</p>
+<button class="w-full flex items-center justify-center gap-2 border border-primary text-primary px-4 py-2.5 rounded-lg font-epilogue text-sm font-semibold hover:bg-primary/5 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-base" data-icon="download">download</span>
+                            Download PNG
+                        </button>
+</div>
+</div>
+<!-- Repeat for Tables 5-8 -->
+<!-- Table Card 5 (Inactive Example) -->
+<div class="bg-white rounded-xl border border-[#E8E8E4] p-md shadow-[0px_4px_20px_rgba(0,0,0,0.04)] hover:shadow-md transition-shadow group">
+<div class="relative aspect-square mb-md bg-surface-container-low rounded-lg overflow-hidden flex items-center justify-center p-lg grayscale opacity-75">
+<div class="absolute top-2 right-2 flex items-center gap-1 px-2 py-1 bg-white/90 backdrop-blur rounded-full shadow-sm">
+<span class="w-2 h-2 bg-stone-400 rounded-full"></span>
+<span class="text-[10px] font-bold text-stone-500 uppercase">Inactive</span>
+</div>
+<img alt="QR Code Table 5" class="w-full h-full object-contain mix-blend-multiply opacity-90 group-hover:scale-105 transition-transform" data-alt="A high-resolution QR code placed on a minimalist digital canvas. The aesthetic is clean and modern, featuring deep green accents and metallic gold highlights against a warm parchment background. The atmosphere is serene and professional, consistent with a world-class culinary establishment's branding." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLuzb8qnG9_s-cCzGtnLPmeB560wDWr3R4E3rFrl0qWCzHaayXAnMiEnL0Ce5fqU6ShXN03joHYJAuM6DWhuFOl6HD2Fuecy9LYyIpx8h2evwW4bnveAyM1wKWifeU5cEruBddT9DykDBj2a8TyEptCFMtO-rNfavGA6hD9K1pwz6THEExQtFWm_r2xGUbJADQTyDaJyYf3szLRXcTHG843Fv5SghLus5sMGoIPS42vSE4dwDRM5jykFNOg5wrWXRmvlaiwBYhapv8"/>
+</div>
+<div class="text-center">
+<h3 class="font-h3 text-on-surface mb-xs">Table 5</h3>
+<p class="text-label-sm text-on-surface-variant mb-md uppercase tracking-widest">Mezzanine Level</p>
+<button class="w-full flex items-center justify-center gap-2 border border-primary text-primary px-4 py-2.5 rounded-lg font-epilogue text-sm font-semibold hover:bg-primary/5 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-base" data-icon="download">download</span>
+                            Download PNG
+                        </button>
+</div>
+</div>
+<!-- Table Card 6 -->
+<div class="bg-white rounded-xl border border-[#E8E8E4] p-md shadow-[0px_4px_20px_rgba(0,0,0,0.04)] hover:shadow-md transition-shadow group">
+<div class="relative aspect-square mb-md bg-surface-container-low rounded-lg overflow-hidden flex items-center justify-center p-lg">
+<div class="absolute top-2 right-2 flex items-center gap-1 px-2 py-1 bg-white/90 backdrop-blur rounded-full shadow-sm">
+<span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+<span class="text-[10px] font-bold text-primary uppercase">Active</span>
+</div>
+<img alt="QR Code Table 6" class="w-full h-full object-contain mix-blend-multiply opacity-90 group-hover:scale-105 transition-transform" data-alt="A stylized QR code presented with sophisticated minimalist design elements. The image uses a palette of forest greens and soft whites, illuminated by bright, diffused natural light. The mood is calm and efficient, representing the digital side of a luxury dining experience in a lush, conservatory-like setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6hW6cGOwkkgEkPKoVUBU16oNdLpaf4JWKmMBoHwOC7hjxC55snHlVCUkt46FM6ErPg7dvIMxTGH1On8fLNCi2S0kTXNePOHRVfnFOJ4qpkdesxH0drv5O3GfnfiK7shRN7qshWyWjmzlXYs8rgQm0rv9gZtTtvOFi4-l3qvSoGzSWkv32Z1luPkgRTYKyoxdOSYK5iBPlV8aCSF4v6rS2WW3Lio-D0kIuspuHewPE4eAn0QaCaVjh2eYXKLrZ11wVB4fG41UrVktp"/>
+</div>
+<div class="text-center">
+<h3 class="font-h3 text-on-surface mb-xs">Table 6</h3>
+<p class="text-label-sm text-on-surface-variant mb-md uppercase tracking-widest">Garden View</p>
+<button class="w-full flex items-center justify-center gap-2 border border-primary text-primary px-4 py-2.5 rounded-lg font-epilogue text-sm font-semibold hover:bg-primary/5 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-base" data-icon="download">download</span>
+                            Download PNG
+                        </button>
+</div>
+</div>
+<!-- Table Card 7 -->
+<div class="bg-white rounded-xl border border-[#E8E8E4] p-md shadow-[0px_4px_20px_rgba(0,0,0,0.04)] hover:shadow-md transition-shadow group">
+<div class="relative aspect-square mb-md bg-surface-container-low rounded-lg overflow-hidden flex items-center justify-center p-lg">
+<div class="absolute top-2 right-2 flex items-center gap-1 px-2 py-1 bg-white/90 backdrop-blur rounded-full shadow-sm">
+<span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+<span class="text-[10px] font-bold text-primary uppercase">Active</span>
+</div>
+<img alt="QR Code Table 7" class="w-full h-full object-contain mix-blend-multiply opacity-90 group-hover:scale-105 transition-transform" data-alt="A crisp digital QR code captured in a high-key, modern lighting setup. The surrounding design elements are minimalist, utilizing warm gray and deep forest green tones. The aesthetic is tactile yet clean, emphasizing the ease of technology within a traditional high-end restaurant atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlV1h22RLWA0ZktTnrzpf0AY_xdqeDnfsXjWgNYg-0I7zF6mVIVvG4EGglDDPbWbrM7kHphxkgr8o9OJUDkCanCO6gm5zPZQmHt1XQHzP9y0d2CWqYN05AoUdVmH32MRlcxU8XaY70mvE12k2bGbo_2vU2lwwGDPoNToDuFUNSUbusMyqMlycoTXVc0cltR-R3jROdo-1BtBGUfUQg0yoxLsQZvfzR6Kd3wVBD4j0oW01Nc6TFAG8_5bkK5j7ocKi6pE0FCSRV9u_g"/>
+</div>
+<div class="text-center">
+<h3 class="font-h3 text-on-surface mb-xs">Table 7</h3>
+<p class="text-label-sm text-on-surface-variant mb-md uppercase tracking-widest">Bar High-top</p>
+<button class="w-full flex items-center justify-center gap-2 border border-primary text-primary px-4 py-2.5 rounded-lg font-epilogue text-sm font-semibold hover:bg-primary/5 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-base" data-icon="download">download</span>
+                            Download PNG
+                        </button>
+</div>
+</div>
+<!-- Table Card 8 -->
+<div class="bg-white rounded-xl border border-[#E8E8E4] p-md shadow-[0px_4px_20px_rgba(0,0,0,0.04)] hover:shadow-md transition-shadow group">
+<div class="relative aspect-square mb-md bg-surface-container-low rounded-lg overflow-hidden flex items-center justify-center p-lg">
+<div class="absolute top-2 right-2 flex items-center gap-1 px-2 py-1 bg-white/90 backdrop-blur rounded-full shadow-sm">
+<span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+<span class="text-[10px] font-bold text-primary uppercase">Active</span>
+</div>
+<img alt="QR Code Table 8" class="w-full h-full object-contain mix-blend-multiply opacity-90 group-hover:scale-105 transition-transform" data-alt="A minimalist QR code displayed on a clean white surface with elegant typography. The scene is bright and airy, reflecting a high-end safari-inspired dining space. The visual style relies on high-resolution details and soft ambient shadows to create a premium, heritage-rich feel for the digital interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOy4x2fBQHa8Ja4SvwkuOyGZ4WNEpI16dzGbhpq1UD3TYmX_vobfYdUAyOAVy_dZ9ndcgSOFuHEuPAw3kGym_Oa9z6jfEvDBwkXmOjNkYREH964mz3ZGu-Oq_7_fr5f21qVbrT0jQjBjsTgzI2G4akAueI-h7Mq4oZFNBRhVKMtqZI5CH7L3uXX0LGRjM9IVwbJXIox2HyrozOuUmrYFNbMn3j9GDz1vRtEAJNEhEjfq8YXDdImYCHbRDfEZHxRIwu842gp1HUNF6K"/>
+</div>
+<div class="text-center">
+<h3 class="font-h3 text-on-surface mb-xs">Table 8</h3>
+<p class="text-label-sm text-on-surface-variant mb-md uppercase tracking-widest">Booth Seating</p>
+<button class="w-full flex items-center justify-center gap-2 border border-primary text-primary px-4 py-2.5 rounded-lg font-epilogue text-sm font-semibold hover:bg-primary/5 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-base" data-icon="download">download</span>
+                            Download PNG
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 h-20 pb-safe bg-white/90 backdrop-blur-md border-t border-[#E8E8E4] shadow-[0px_-4px_20px_rgba(0,0,0,0.04)]">
+<div class="flex flex-col items-center justify-center text-stone-400">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-epilogue text-[10px] font-medium uppercase tracking-tighter">Dashboard</span>
+</div>
+<div class="flex flex-col items-center justify-center text-stone-400">
+<span class="material-symbols-outlined" data-icon="edit_note">edit_note</span>
+<span class="font-epilogue text-[10px] font-medium uppercase tracking-tighter">Menu</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#1A5C3A] bg-[#1A5C3A]/10 rounded-xl px-3 py-1">
+<span class="material-symbols-outlined" data-icon="qr_code_2" style="font-variation-settings: 'FILL' 1;">qr_code_2</span>
+<span class="font-epilogue text-[10px] font-medium uppercase tracking-tighter">Tables</span>
+</div>
+<div class="flex flex-col items-center justify-center text-stone-400">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+<span class="font-epilogue text-[10px] font-medium uppercase tracking-tighter">Stats</span>
+</div>
+</nav>
+</body></html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;600;700;800;900&amp;family=Be+Vietnam+Pro:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#707971",
+                    "primary": "#004326",
+                    "on-primary": "#ffffff",
+                    "surface-variant": "#e1e3de",
+                    "tertiary-fixed": "#e2e3e1",
+                    "on-surface": "#191c19",
+                    "inverse-on-surface": "#eff2ec",
+                    "surface-container-highest": "#e1e3de",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#c6c7c5",
+                    "tertiary": "#383a39",
+                    "surface-container": "#ecefe9",
+                    "surface-dim": "#d8dbd6",
+                    "error": "#ba1a1a",
+                    "outline-variant": "#c0c9bf",
+                    "on-secondary-fixed-variant": "#5b4300",
+                    "primary-fixed-dim": "#93d5aa",
+                    "surface-container-low": "#f2f4ef",
+                    "on-background": "#191c19",
+                    "on-surface-variant": "#404942",
+                    "surface": "#f8faf5",
+                    "on-primary-fixed-variant": "#0b5131",
+                    "on-tertiary-fixed": "#1a1c1b",
+                    "secondary": "#795900",
+                    "background": "#f8faf5",
+                    "on-tertiary-container": "#c3c4c2",
+                    "primary-fixed": "#aff2c4",
+                    "primary-container": "#1a5c3a",
+                    "on-tertiary": "#ffffff",
+                    "surface-bright": "#f8faf5",
+                    "on-tertiary-fixed-variant": "#454746",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed": "#261a00",
+                    "inverse-primary": "#93d5aa",
+                    "secondary-container": "#fece65",
+                    "surface-container-high": "#e6e9e4",
+                    "secondary-fixed": "#ffdf9f",
+                    "on-secondary": "#ffffff",
+                    "on-primary-container": "#91d2a7",
+                    "on-secondary-container": "#755700",
+                    "surface-tint": "#2a6a47",
+                    "tertiary-container": "#4f5150",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed": "#002110",
+                    "on-error": "#ffffff",
+                    "secondary-fixed-dim": "#eec058",
+                    "inverse-surface": "#2e312e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "gutter": "16px",
+                    "container-padding": "20px",
+                    "sm": "8px",
+                    "lg": "24px",
+                    "xl": "40px",
+                    "base": "4px",
+                    "md": "16px"
+            },
+            "fontFamily": {
+                    "h2": ["Epilogue"],
+                    "body-md": ["Be Vietnam Pro"],
+                    "h1": ["Epilogue"],
+                    "body-lg": ["Be Vietnam Pro"],
+                    "h3": ["Epilogue"],
+                    "label-sm": ["Be Vietnam Pro"],
+                    "price": ["Be Vietnam Pro"]
+            },
+            "fontSize": {
+                    "h2": ["24px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "h1": ["32px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "h3": ["20px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "1.0", "fontWeight": "600"}],
+                    "price": ["18px", {"lineHeight": "1.2", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body-md text-on-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-5 h-16 bg-[#FAFAF8] border-b border-[#E8E8E4] shadow-[0px_4px_20px_rgba(0,0,0,0.04)]">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-2xl">eco</span>
+<div class="flex flex-col">
+<span class="font-epilogue text-lg font-bold text-[#1A5C3A] uppercase tracking-widest leading-none">The Savanna Grill</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-secondary-container text-on-secondary-container w-fit mt-1 uppercase tracking-wider">Table 4</span>
+</div>
+</div>
+<div class="relative active:opacity-80 transition-opacity cursor-pointer p-2 rounded-full hover:bg-stone-100 transition-colors">
+<span class="material-symbols-outlined text-primary text-2xl">shopping_bag</span>
+<span class="absolute top-1 right-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-white text-[10px] font-bold">2</span>
+</div>
+</header>
+<main class="pt-20 pb-32">
+<!-- Category Navigation -->
+<section class="px-5 mb-8">
+<div class="flex gap-3 overflow-x-auto hide-scrollbar py-2">
+<button class="whitespace-nowrap px-6 py-2.5 rounded-full bg-primary text-white font-label-sm text-label-sm shadow-sm">All</button>
+<button class="whitespace-nowrap px-6 py-2.5 rounded-full bg-white border border-[#E8E8E4] text-on-surface-variant font-label-sm text-label-sm hover:bg-stone-50 transition-colors">Starters</button>
+<button class="whitespace-nowrap px-6 py-2.5 rounded-full bg-white border border-[#E8E8E4] text-on-surface-variant font-label-sm text-label-sm hover:bg-stone-50 transition-colors">Mains</button>
+<button class="whitespace-nowrap px-6 py-2.5 rounded-full bg-white border border-[#E8E8E4] text-on-surface-variant font-label-sm text-label-sm hover:bg-stone-50 transition-colors">Grills</button>
+<button class="whitespace-nowrap px-6 py-2.5 rounded-full bg-white border border-[#E8E8E4] text-on-surface-variant font-label-sm text-label-sm hover:bg-stone-50 transition-colors">Desserts</button>
+<button class="whitespace-nowrap px-6 py-2.5 rounded-full bg-white border border-[#E8E8E4] text-on-surface-variant font-label-sm text-label-sm hover:bg-stone-50 transition-colors">Drinks</button>
+</div>
+</section>
+<!-- Menu Section Header -->
+<div class="px-5 mb-6">
+<h2 class="font-h2 text-h2 text-primary">Featured Selection</h2>
+<p class="text-on-surface-variant text-sm mt-1">Inspired by the vast African landscape.</p>
+</div>
+<!-- Dish List -->
+<section class="px-5 space-y-6">
+<!-- Dish Card 1 -->
+<div class="bg-white rounded-xl border border-[#E8E8E4] shadow-[0px_4px_20px_rgba(0,0,0,0.04)] overflow-hidden group">
+<div class="relative h-[180px] w-full overflow-hidden">
+<img alt="Peri-Peri Chicken Wings" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A professional culinary photograph of spicy Peri-Peri chicken wings served on a rustic wooden platter. The wings are charred to perfection with a vibrant red glaze, garnished with fresh cilantro and lime wedges. The lighting is warm and cinematic, emphasizing the glossy texture of the sauce against a soft-focus background of a high-end conservatory dining room." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhuBCQBgJZ7bPta_267htvU_YVTx1eZBpnVPvGaTKqFUsxBTQnjhmEvE_DZiOD27wUWI1ypKBfeJlmdmdDZV51IRaMkUQUhIFbTsiTe2ZSCmYIQgLSQ8sinM70JnWwEL_p18iMug8Ep780OLpaQgI01lH4LSd_XmRNxSWUw8PK2E14lKfsIdF5ApvEKCLK7BOO-51IoNwIIE1O8rCbSquIuX5rdT1PCzS4H9glt-r60_2s9llqj_sfUbMG1dqe2OboFLJfaGcEyOy2"/>
+<div class="absolute top-3 right-3 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-md shadow-sm border border-secondary/20">
+<span class="material-symbols-outlined text-secondary text-[16px]" style="font-variation-settings: 'FILL' 1;">view_in_ar</span>
+<span class="text-[10px] font-bold text-secondary uppercase tracking-wider">View in AR</span>
+</div>
+</div>
+<div class="p-md">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-h3 text-h3 text-on-surface mb-1">Peri-Peri Chicken Wings</h3>
+<p class="text-[13px] text-on-surface-variant line-clamp-1">Spicy flame-grilled wings with a citrus-herb kick.</p>
+</div>
+</div>
+<div class="mt-4 flex justify-between items-center">
+<span class="font-price text-price text-primary">$12.00</span>
+<button class="bg-primary text-white px-5 py-2 rounded-lg font-label-sm text-label-sm active:scale-95 transition-transform">Add to Order</button>
+</div>
+</div>
+</div>
+<!-- Dish Card 2 -->
+<div class="bg-white rounded-xl border border-[#E8E8E4] shadow-[0px_4px_20px_rgba(0,0,0,0.04)] overflow-hidden group">
+<div class="relative h-[180px] w-full overflow-hidden">
+<img alt="Grilled Ribeye Steak" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Close-up of a premium grilled ribeye steak with distinct grill marks, resting on a bed of roasted root vegetables. A sprig of rosemary and a melting pat of herb butter sit atop the meat. The scene is lit with natural, bright light typical of a safari lodge at midday, highlighting the juices and textures of the medium-rare steak. Pure white background elements keep the focus on the meat." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8ymWSmjSAjg1y0_DldOEjIqQSp6-5iRYa74LuaR5h19eSBqQXrDbvBe1JMPDJ8B84ObUkvO0lIo0uBp4bLzsJywuZfg-x9vBqejfRf02DBbDyaZ7SR4vFWOLy0uV0s9_Bm9w3Db0AVWaAu7jj6W8p-IJvkdfAiU3hqrLboFAEsH5N5P3UbsIfn5EzjPXZHZ8KjG0uMO6SM35xFWv2AyfPoXPLyKCnWvIIgOKaSK1Rpvv6PY-yB24uPQEGkxV7T3i6DcyElPsgf-Mt"/>
+<div class="absolute top-3 right-3 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-md shadow-sm border border-secondary/20">
+<span class="material-symbols-outlined text-secondary text-[16px]" style="font-variation-settings: 'FILL' 1;">view_in_ar</span>
+<span class="text-[10px] font-bold text-secondary uppercase tracking-wider">View in AR</span>
+</div>
+</div>
+<div class="p-md">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-h3 text-h3 text-on-surface mb-1">Grilled Ribeye Steak</h3>
+<p class="text-[13px] text-on-surface-variant line-clamp-1">300g grass-fed beef with peppercorn reduction.</p>
+</div>
+</div>
+<div class="mt-4 flex justify-between items-center">
+<span class="font-price text-price text-primary">$34.00</span>
+<button class="bg-primary text-white px-5 py-2 rounded-lg font-label-sm text-label-sm active:scale-95 transition-transform">Add to Order</button>
+</div>
+</div>
+</div>
+<!-- Dish Card 3 -->
+<div class="bg-white rounded-xl border border-[#E8E8E4] shadow-[0px_4px_20px_rgba(0,0,0,0.04)] overflow-hidden group">
+<div class="relative h-[180px] w-full overflow-hidden">
+<img alt="Roasted Lamb Chops" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Exquisite roasted lamb chops arranged elegantly on a white ceramic plate. Each chop is encrusted with garden herbs and served alongside a vibrant mint chimichurri. The lighting is soft and ambient, reflecting the sophisticated minimalist aesthetic of a luxury dining space. The palette consists of earthy greens, deep browns, and pristine whites, creating a serene and premium feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_mumwvOvbM0XXZDX0WMVZjP_ShFSYfOsK81wdiZenwBGwAd_HAKN5Ao9Hld-ua4YgTcvKyLcHy01_KM459j1WVGlUO8zHhTHMb60j31D5FPZLx2qa8hBecTWYQYgS3KewbyBCAcMdXb6N2JK5mNe4mVPY_PZSRlM-WC7BkQW657Xgr4of0v5yG3DoDLOO2OjSoPov54C7mia_RhG2E80477hvgE4XYrUcoJYF12Ft9FtQB8LM7lIrGRkURHfr61ekKt9kLiwcW6tH"/>
+<div class="absolute top-3 right-3 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-md shadow-sm border border-secondary/20">
+<span class="material-symbols-outlined text-secondary text-[16px]" style="font-variation-settings: 'FILL' 1;">view_in_ar</span>
+<span class="text-[10px] font-bold text-secondary uppercase tracking-wider">View in AR</span>
+</div>
+</div>
+<div class="p-md">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-h3 text-h3 text-on-surface mb-1">Roasted Lamb Chops</h3>
+<p class="text-[13px] text-on-surface-variant line-clamp-1">Tender Karoo lamb with mint infused jus.</p>
+</div>
+</div>
+<div class="mt-4 flex justify-between items-center">
+<span class="font-price text-price text-primary">$38.00</span>
+<button class="bg-primary text-white px-5 py-2 rounded-lg font-label-sm text-label-sm active:scale-95 transition-transform">Add to Order</button>
+</div>
+</div>
+</div>
+<!-- Dish Card 4 -->
+<div class="bg-white rounded-xl border border-[#E8E8E4] shadow-[0px_4px_20px_rgba(0,0,0,0.04)] overflow-hidden group">
+<div class="relative h-[180px] w-full overflow-hidden">
+<img alt="Mango Cheesecake" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A gourmet mango cheesecake slice topped with fresh mango coulis and edible gold leaf. The dessert sits on a marble surface with a minimalist parchment-like background. The lighting is bright and high-key, highlighting the creamy texture and vibrant yellow of the fruit. The overall mood is one of quiet indulgence and modern elegance, following a minimalist and tactile design philosophy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAxeSWH8Vpd6jGYTzSjh60LZylE61591Pvpu-jfdFufLLNPdZeXlzpatWLEl-3tb49f6w0obXdhEDXp0csUuGmSv_6-WcL0l-GHBOR2bVwnScUyWSwRNNW8IZWL7XoYHuMuT2C1fHh1idAA4O8mD09b4Unnst48MTiJo8DAkm9UxsdzuIkteAMiPPF9lvcniCdKDb2EkFkljq3KZxGl_-YSlvrEtDiwCH8w31q5_iYtacJ2FwdpXj6DBhz1Z4QDOIl82Bfpjr_c0jb"/>
+<div class="absolute top-3 right-3 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-md shadow-sm border border-secondary/20">
+<span class="material-symbols-outlined text-secondary text-[16px]" style="font-variation-settings: 'FILL' 1;">view_in_ar</span>
+<span class="text-[10px] font-bold text-secondary uppercase tracking-wider">View in AR</span>
+</div>
+</div>
+<div class="p-md">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-h3 text-h3 text-on-surface mb-1">Mango Cheesecake</h3>
+<p class="text-[13px] text-on-surface-variant line-clamp-1">Tropical Alfonso mango on a buttery crust.</p>
+</div>
+</div>
+<div class="mt-4 flex justify-between items-center">
+<span class="font-price text-price text-primary">$9.00</span>
+<button class="bg-primary text-white px-5 py-2 rounded-lg font-label-sm text-label-sm active:scale-95 transition-transform">Add to Order</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating Bottom Bar (Order Summary) -->
+<div class="fixed bottom-24 left-1/2 -translate-x-1/2 w-[calc(100%-40px)] max-w-md z-40">
+<div class="bg-white/90 backdrop-blur-md border border-[#E8E8E4] rounded-2xl p-4 shadow-[0px_8px_30px_rgba(0,0,0,0.12)] flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-xs font-bold text-on-surface-variant uppercase tracking-tighter">2 items · $46.00</span>
+<span class="text-[10px] text-primary font-medium">Ready to review</span>
+</div>
+<button class="bg-primary text-white px-6 py-3 rounded-xl font-label-sm text-label-sm shadow-md active:scale-95 transition-transform flex items-center gap-2">
+                View Order
+                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 h-20 pb-safe bg-white/90 backdrop-blur-md border-t border-[#E8E8E4] rounded-t-2xl shadow-[0px_-4px_20px_rgba(0,0,0,0.04)]">
+<a class="flex flex-col items-center justify-center text-[#1A5C3A] bg-[#1A5C3A]/10 rounded-xl px-4 py-2" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">restaurant_menu</span>
+<span class="font-epilogue text-[10px] font-medium uppercase tracking-tighter">Menu</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 hover:text-[#1A5C3A] transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">view_in_ar</span>
+<span class="font-epilogue text-[10px] font-medium uppercase tracking-tighter">AR View</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 hover:text-[#1A5C3A] transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">smart_toy</span>
+<span class="font-epilogue text-[10px] font-medium uppercase tracking-tighter">AI Chat</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 hover:text-[#1A5C3A] transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">shopping_bag</span>
+<span class="font-epilogue text-[10px] font-medium uppercase tracking-tighter">Order</span>
+</a>
+</nav>
+</body></html>

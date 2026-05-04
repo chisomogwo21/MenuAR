@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Savanna Grill - AI Assistant</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700;800;900&amp;family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline": "#707971",
+                      "primary": "#004326",
+                      "on-primary": "#ffffff",
+                      "surface-variant": "#e1e3de",
+                      "tertiary-fixed": "#e2e3e1",
+                      "on-surface": "#191c19",
+                      "inverse-on-surface": "#eff2ec",
+                      "surface-container-highest": "#e1e3de",
+                      "error-container": "#ffdad6",
+                      "tertiary-fixed-dim": "#c6c7c5",
+                      "tertiary": "#383a39",
+                      "surface-container": "#ecefe9",
+                      "surface-dim": "#d8dbd6",
+                      "error": "#ba1a1a",
+                      "outline-variant": "#c0c9bf",
+                      "on-secondary-fixed-variant": "#5b4300",
+                      "primary-fixed-dim": "#93d5aa",
+                      "surface-container-low": "#f2f4ef",
+                      "on-background": "#191c19",
+                      "on-surface-variant": "#404942",
+                      "surface": "#f8faf5",
+                      "on-primary-fixed-variant": "#0b5131",
+                      "on-tertiary-fixed": "#1a1c1b",
+                      "secondary": "#795900",
+                      "background": "#f8faf5",
+                      "on-tertiary-container": "#c3c4c2",
+                      "primary-fixed": "#aff2c4",
+                      "primary-container": "#1a5c3a",
+                      "on-tertiary": "#ffffff",
+                      "surface-bright": "#f8faf5",
+                      "on-tertiary-fixed-variant": "#454746",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary-fixed": "#261a00",
+                      "inverse-primary": "#93d5aa",
+                      "secondary-container": "#fece65",
+                      "surface-container-high": "#e6e9e4",
+                      "secondary-fixed": "#ffdf9f",
+                      "on-secondary": "#ffffff",
+                      "on-primary-container": "#91d2a7",
+                      "on-secondary-container": "#755700",
+                      "surface-tint": "#2a6a47",
+                      "tertiary-container": "#4f5150",
+                      "on-error-container": "#93000a",
+                      "on-primary-fixed": "#002110",
+                      "on-error": "#ffffff",
+                      "secondary-fixed-dim": "#eec058",
+                      "inverse-surface": "#2e312e"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xs": "4px",
+                      "gutter": "16px",
+                      "container-padding": "20px",
+                      "sm": "8px",
+                      "lg": "24px",
+                      "xl": "40px",
+                      "base": "4px",
+                      "md": "16px"
+              },
+              "fontFamily": {
+                      "h2": ["Epilogue"],
+                      "body-md": ["Be Vietnam Pro"],
+                      "h1": ["Epilogue"],
+                      "body-lg": ["Be Vietnam Pro"],
+                      "h3": ["Epilogue"],
+                      "label-sm": ["Be Vietnam Pro"],
+                      "price": ["Be Vietnam Pro"]
+              },
+              "fontSize": {
+                      "h2": ["24px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "h1": ["32px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "h3": ["20px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "label-sm": ["12px", {"lineHeight": "1.0", "fontWeight": "600"}],
+                      "price": ["18px", {"lineHeight": "1.2", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .chat-scroll-area::-webkit-scrollbar {
+            display: none;
+        }
+        .chat-scroll-area {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md">
+<!-- Blurred Background Content (Menu Mockup) -->
+<div class="fixed inset-0 z-0 blur-md opacity-40 pointer-events-none">
+<header class="fixed top-0 left-0 w-full flex items-center justify-between px-5 h-16 border-b border-surface-variant">
+<span class="font-h3 text-primary uppercase tracking-widest">The Savanna Grill</span>
+<div class="w-10 h-10 rounded-full bg-surface-container"></div>
+</header>
+<main class="pt-24 px-container-padding space-y-xl">
+<div class="space-y-md">
+<div class="h-8 w-48 bg-primary/20 rounded"></div>
+<div class="grid grid-cols-2 gap-md">
+<div class="h-48 bg-white border border-surface-variant rounded-xl shadow-sm"></div>
+<div class="h-48 bg-white border border-surface-variant rounded-xl shadow-sm"></div>
+</div>
+</div>
+<div class="space-y-md">
+<div class="h-8 w-32 bg-primary/20 rounded"></div>
+<div class="h-64 bg-white border border-surface-variant rounded-xl shadow-sm"></div>
+</div>
+</main>
+</div>
+<!-- Backdrop overlay -->
+<div class="fixed inset-0 bg-black/20 z-10"></div>
+<!-- AI Assistant Bottom Sheet -->
+<div class="fixed bottom-0 left-0 right-0 z-50 bg-white h-[72%] rounded-t-[20px] shadow-[0px_-4px_20px_rgba(0,0,0,0.08)] flex flex-col">
+<!-- Drag Handle -->
+<div class="flex justify-center pt-3 pb-2">
+<div class="w-8 h-1 bg-surface-container-highest rounded-full"></div>
+</div>
+<!-- Sheet Header -->
+<header class="px-container-padding pb-md border-b border-surface-variant">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="font-h2 text-primary">AI Menu Assistant</h2>
+<p class="text-[12px] font-label-sm text-outline opacity-70">Powered by Claude AI</p>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-on-surface">close</span>
+</button>
+</div>
+</header>
+<!-- Chat Area -->
+<div class="flex-1 overflow-y-auto p-container-padding space-y-lg chat-scroll-area">
+<!-- AI Welcome Bubble -->
+<div class="flex flex-col items-start max-w-[85%] animate-fade-in">
+<div class="bg-[#F5F0E8] text-on-surface px-md py-sm rounded-2xl rounded-tl-none border border-[#E8E1D5]">
+<p class="text-body-md">Hi! I'm your menu assistant. Tell me what you're in the mood for — diet, flavour, budget, anything.</p>
+</div>
+</div>
+<!-- User Message -->
+<div class="flex flex-col items-end w-full animate-fade-in">
+<div class="bg-primary text-on-primary px-md py-sm rounded-2xl rounded-tr-none max-w-[85%]">
+<p class="text-body-md">I want something vegetarian and not too heavy, under $20</p>
+</div>
+</div>
+<!-- AI Recommendation Flow -->
+<div class="flex flex-col items-start w-full space-y-md animate-fade-in">
+<div class="bg-[#F5F0E8] text-on-surface px-md py-sm rounded-2xl rounded-tl-none border border-[#E8E1D5] max-w-[85%]">
+<p class="text-body-md">Here are two great options for you:</p>
+</div>
+<!-- Recommendation Cards -->
+<div class="flex flex-col gap-md w-full sm:flex-row">
+<!-- Card 1 -->
+<div class="flex-1 bg-white border border-surface-variant rounded-xl p-md shadow-sm">
+<div class="relative w-full h-32 mb-sm overflow-hidden rounded-lg">
+<img alt="Grilled Veggie Platter" class="w-full h-full object-cover" data-alt="A gourmet grilled vegetable platter presented on a rustic ceramic plate in a sunlit conservatory setting. Charred asparagus, bell peppers, and zucchini are artfully arranged next to a creamy swirl of hummus topped with olive oil. The lighting is warm and natural, emphasizing the rich textures and organic colors of the meal. The aesthetic is sophisticated and airy, consistent with a high-end safari lodge restaurant." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC70iTRleifHYifDSCK7axBQU0B8KDggdWmceMqAJXf0yJkOBX3Kl0Q0aF1Jx8rVkD0hRMgCQGLqybNnkwPDlgQuN_I1Zim8UiGkeDKT4FQXnDP8yFHfC0WJVk1PMzwegrD1llGLjjRMo5-OH_-Mp7v2dqM-OrW48wB223bmWHus3Um10WcdYL-Q7npO0QBTJI56l2NoIeKYY0q88QtQbVE8y5_W8QJSADRl0jLVAIyzZEwPBi1L8GmkoU-dK8VHqK0YebpJfExJHdW"/>
+</div>
+<div class="flex justify-between items-start mb-xs">
+<h3 class="font-h3 text-primary text-body-md">Grilled Veggie Platter</h3>
+<span class="font-price text-primary">$16</span>
+</div>
+<p class="text-label-sm text-outline mb-md leading-snug">Light and colourful, grilled seasonal veg with hummus</p>
+<button class="w-full py-2 bg-primary text-on-primary rounded-lg font-label-sm hover:opacity-90 transition-opacity">
+                            Add to order
+                        </button>
+</div>
+<!-- Card 2 -->
+<div class="flex-1 bg-white border border-surface-variant rounded-xl p-md shadow-sm">
+<div class="relative w-full h-32 mb-sm overflow-hidden rounded-lg">
+<img alt="Mango &amp; Avocado Salad" class="w-full h-full object-cover" data-alt="A fresh mango and avocado salad served in a minimalist porcelain bowl. Large chunks of ripe mango and creamy avocado are tossed with cilantro and thinly sliced red onions in a zesty vinaigrette. The background is a clean, off-white parchment texture with soft shadows. The lighting is bright and high-key, highlighting the vibrant green and orange hues of the fresh ingredients." src="https://lh3.googleusercontent.com/aida-public/AB6AXuChdPatOdjr1K4A818KnbEe-qBWQWnS9X2U4f7e0BHyzhmMdomHFL3A7Of4zC8XgCSf1NiO_bteIh9eGnG0Cyshp0YthWKNENeK1-IjoxFrvSrKTMHVHlTxLt0I_3yf_CmZY5rddrDtm6ekmp-POlm0dI7tnLsekmF4PTbbnNWPn_d9fKUAPFjX9oOlnSMVSmGx6g8UQS3SJo1-kR-S-zqw07DNijh8gAEtAjvwBDG4LFoMR1t6_I0CPJ5mhshfigA0Pm1oPb_FfMze"/>
+</div>
+<div class="flex justify-between items-start mb-xs">
+<h3 class="font-h3 text-primary text-body-md">Mango &amp; Avocado Salad</h3>
+<span class="font-price text-primary">$14</span>
+</div>
+<p class="text-label-sm text-outline mb-md leading-snug">Fresh, zesty and filling with ripe tropical fruit</p>
+<button class="w-full py-2 bg-primary text-on-primary rounded-lg font-label-sm hover:opacity-90 transition-opacity">
+                            Add to order
+                        </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Input Area -->
+<div class="p-container-padding border-t border-surface-variant bg-white pb-8">
+<div class="flex items-center gap-sm bg-surface-container-low rounded-xl px-md py-2 border border-surface-variant/50">
+<input class="flex-1 bg-transparent border-none focus:ring-0 text-body-md placeholder:text-outline/50" placeholder="Ask me anything about the menu..." type="text"/>
+<button class="w-10 h-10 bg-primary text-on-primary rounded-lg flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined">arrow_upward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Bottom Navigation Bar (Contextual mapping for Menu) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 h-20 pb-safe bg-white/90 backdrop-blur-md border-t border-surface-variant rounded-t-2xl shadow-[0px_-4px_20px_rgba(0,0,0,0.04)]">
+<div class="flex flex-col items-center justify-center text-primary bg-primary/10 rounded-xl px-3 py-1 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="restaurant_menu">restaurant_menu</span>
+<span class="font-epilogue text-[10px] font-medium uppercase tracking-tighter">Menu</span>
+</div>
+<div class="flex flex-col items-center justify-center text-stone-400 hover:text-primary transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="view_in_ar">view_in_ar</span>
+<span class="font-epilogue text-[10px] font-medium uppercase tracking-tighter">AR View</span>
+</div>
+<div class="flex flex-col items-center justify-center text-stone-400 hover:text-primary transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+<span class="font-epilogue text-[10px] font-medium uppercase tracking-tighter">AI Chat</span>
+</div>
+<div class="flex flex-col items-center justify-center text-stone-400 hover:text-primary transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+<span class="font-epilogue text-[10px] font-medium uppercase tracking-tighter">Order</span>
+</div>
+</nav>
+</body></html>

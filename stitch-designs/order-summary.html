@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;600;700;800;900&amp;family=Be+Vietnam+Pro:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#707971",
+                        "primary": "#004326",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#e1e3de",
+                        "tertiary-fixed": "#e2e3e1",
+                        "on-surface": "#191c19",
+                        "inverse-on-surface": "#eff2ec",
+                        "surface-container-highest": "#e1e3de",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#c6c7c5",
+                        "tertiary": "#383a39",
+                        "surface-container": "#ecefe9",
+                        "surface-dim": "#d8dbd6",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#c0c9bf",
+                        "on-secondary-fixed-variant": "#5b4300",
+                        "primary-fixed-dim": "#93d5aa",
+                        "surface-container-low": "#f2f4ef",
+                        "on-background": "#191c19",
+                        "on-surface-variant": "#404942",
+                        "surface": "#f8faf5",
+                        "on-primary-fixed-variant": "#0b5131",
+                        "on-tertiary-fixed": "#1a1c1b",
+                        "secondary": "#795900",
+                        "background": "#f8faf5",
+                        "on-tertiary-container": "#c3c4c2",
+                        "primary-fixed": "#aff2c4",
+                        "primary-container": "#1a5c3a",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#f8faf5",
+                        "on-tertiary-fixed-variant": "#454746",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#261a00",
+                        "inverse-primary": "#93d5aa",
+                        "secondary-container": "#fece65",
+                        "surface-container-high": "#e6e9e4",
+                        "secondary-fixed": "#ffdf9f",
+                        "on-secondary": "#ffffff",
+                        "on-primary-container": "#91d2a7",
+                        "on-secondary-container": "#755700",
+                        "surface-tint": "#2a6a47",
+                        "tertiary-container": "#4f5150",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed": "#002110",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#eec058",
+                        "inverse-surface": "#2e312e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "gutter": "16px",
+                        "container-padding": "20px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "xl": "40px",
+                        "base": "4px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "h2": ["Epilogue"],
+                        "body-md": ["Be Vietnam Pro"],
+                        "h1": ["Epilogue"],
+                        "body-lg": ["Be Vietnam Pro"],
+                        "h3": ["Epilogue"],
+                        "label-sm": ["Be Vietnam Pro"],
+                        "price": ["Be Vietnam Pro"]
+                    },
+                    "fontSize": {
+                        "h2": ["24px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "h1": ["32px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "h3": ["20px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "1.0", "fontWeight": "600"}],
+                        "price": ["18px", {"lineHeight": "1.2", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .order-card-shadow {
+            box-shadow: 0px 4px 20px rgba(0,0,0,0.04);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-5 h-16 bg-[#FAFAF8] border-b border-[#E8E8E4] shadow-[0px_4px_20px_rgba(0,0,0,0.04)]">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-[#1A5C3A] active:opacity-80 transition-opacity">arrow_back</button>
+<h1 class="font-epilogue font-semibold tracking-tight text-[#1A5C3A] text-h3">Your Order</h1>
+</div>
+<div class="bg-primary-container/10 px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-primary-container text-[16px]">table_restaurant</span>
+<span class="font-label-sm text-primary-container">Table 4</span>
+</div>
+</header>
+<main class="pt-24 pb-32 px-container-padding max-w-2xl mx-auto">
+<!-- Order Summary Section -->
+<section class="mb-xl">
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/30 order-card-shadow overflow-hidden">
+<div class="p-md space-y-md">
+<!-- Item 1 -->
+<div class="flex items-center justify-between gap-4">
+<div class="flex-1">
+<p class="font-h3 text-on-surface leading-tight">Grilled Ribeye Steak</p>
+<p class="text-label-sm text-on-surface-variant font-medium">Medium Rare, Peppercorn Sauce</p>
+</div>
+<div class="flex items-center bg-surface-container rounded-lg px-2 py-1">
+<button class="material-symbols-outlined text-on-surface-variant text-[18px]">remove</button>
+<span class="mx-3 font-bold text-on-surface">1</span>
+<button class="material-symbols-outlined text-on-surface-variant text-[18px]">add</button>
+</div>
+<p class="font-price text-primary w-16 text-right">$34.00</p>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center justify-between gap-4">
+<div class="flex-1">
+<p class="font-h3 text-on-surface leading-tight">Peri-Peri Wings</p>
+<p class="text-label-sm text-on-surface-variant font-medium">Extra Hot, Blue Cheese Dip</p>
+</div>
+<div class="flex items-center bg-surface-container rounded-lg px-2 py-1">
+<button class="material-symbols-outlined text-on-surface-variant text-[18px]">remove</button>
+<span class="mx-3 font-bold text-on-surface">2</span>
+<button class="material-symbols-outlined text-on-surface-variant text-[18px]">add</button>
+</div>
+<p class="font-price text-primary w-16 text-right">$24.00</p>
+</div>
+<!-- Item 3 -->
+<div class="flex items-center justify-between gap-4">
+<div class="flex-1">
+<p class="font-h3 text-on-surface leading-tight">Mango Cheesecake</p>
+<p class="text-label-sm text-on-surface-variant font-medium">Seasonal Fruit Garnish</p>
+</div>
+<div class="flex items-center bg-surface-container rounded-lg px-2 py-1">
+<button class="material-symbols-outlined text-on-surface-variant text-[18px]">remove</button>
+<span class="mx-3 font-bold text-on-surface">1</span>
+<button class="material-symbols-outlined text-on-surface-variant text-[18px]">add</button>
+</div>
+<p class="font-price text-primary w-16 text-right">$9.00</p>
+</div>
+<hr class="border-outline-variant/20 my-md"/>
+<!-- Totals -->
+<div class="space-y-sm">
+<div class="flex justify-between text-body-md text-on-surface-variant">
+<span>Subtotal</span>
+<span>$67.00</span>
+</div>
+<div class="flex justify-between text-body-md text-on-surface-variant">
+<span>Service charge (10%)</span>
+<span>$7.70</span>
+</div>
+<div class="flex justify-between items-center pt-2">
+<span class="font-h2 text-on-surface">Total</span>
+<span class="font-h1 text-primary">$74.70</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Instructions Section -->
+<section class="mb-xl">
+<h2 class="font-h3 text-on-surface mb-md">Special instructions</h2>
+<div class="bg-surface-container rounded-lg p-md">
+<textarea class="w-full bg-transparent border-none focus:ring-0 text-body-md p-0 placeholder:text-on-surface-variant/50 min-h-[80px]" placeholder="Any notes for the kitchen?"></textarea>
+</div>
+</section>
+<hr class="border-outline-variant/30 mb-xl"/>
+<!-- Payment Section -->
+<section class="mb-xl">
+<h2 class="font-h3 text-on-surface mb-md">Pay now</h2>
+<div class="grid grid-cols-2 gap-md">
+<!-- Option 1: Selected -->
+<div class="relative cursor-pointer border-2 border-primary-container bg-primary-container/5 rounded-xl p-lg flex flex-col items-center justify-center gap-2 transition-all active:scale-95">
+<div class="absolute top-2 right-2">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<span class="material-symbols-outlined text-primary text-[32px]">credit_card</span>
+<span class="font-h3 text-on-surface">Card</span>
+</div>
+<!-- Option 2: Not Selected -->
+<div class="cursor-pointer border border-outline-variant/50 bg-surface-container-lowest rounded-xl p-lg flex flex-col items-center justify-center gap-2 transition-all active:scale-95 hover:border-primary/30">
+<span class="material-symbols-outlined text-on-surface-variant text-[32px]">smartphone</span>
+<span class="font-h3 text-on-surface-variant">Mobile Money</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Fixed Bottom Action -->
+<div class="fixed bottom-0 left-0 w-full bg-white/90 backdrop-blur-md border-t border-outline-variant/30 px-container-padding py-md z-50">
+<div class="max-w-2xl mx-auto">
+<button class="w-full bg-primary text-on-primary font-h2 py-4 rounded-lg shadow-lg active:scale-[0.98] transition-transform flex items-center justify-center gap-2">
+<span>Pay $74.70</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<p class="text-center text-label-sm text-on-surface-variant mt-3 uppercase tracking-widest">Secure Checkout Powered by Savanna Grill</p>
+</div>
+</div>
+<!-- Background Decoration for high-end feel -->
+<div class="fixed inset-0 pointer-events-none -z-10 opacity-20">
+<div class="absolute -top-20 -right-20 w-80 h-80 bg-primary/10 rounded-full blur-[100px]"></div>
+<div class="absolute -bottom-20 -left-20 w-80 h-80 bg-secondary/10 rounded-full blur-[100px]"></div>
+</div>
+</body></html>

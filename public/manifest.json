@@ -1,0 +1,17 @@
+{
+  "name": "MenuAR",
+  "short_name": "MenuAR",
+  "theme_color": "#1A5C3A",
+  "background_color": "#FAFAF8",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/leaf.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
