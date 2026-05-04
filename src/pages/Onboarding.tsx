@@ -44,6 +44,7 @@ const Onboarding: React.FC = () => {
     primary_color: '#1A5C3A'
   });
   const [uploadingLogo, setUploadingLogo] = useState(false);
+  const [logoError, setLogoError] = useState<string | null>(null);
   const [slugStatus, setSlugStatus] = useState<'idle' | 'loading' | 'available' | 'taken'>('idle');
 
   // Step 2 State: Categories
@@ -86,6 +87,13 @@ const Onboarding: React.FC = () => {
     }
   }, [restaurant]);
 
+  useEffect(() => {
+    if (!authLoading && !restaurant?.id) {
+      console.error('No restaurant ID in context');
+      navigate('/admin/login');
+    }
+  }, [restaurant?.id, authLoading, navigate]);
+
   // Auth Protection
   if (authLoading) return <div className="min-h-screen flex items-center justify-center"><Loader2 className="animate-spin text-primary" /></div>;
   if (!isAuthenticated) return <Navigate to="/admin/login" replace />;
@@ -97,13 +105,31 @@ const Onboarding: React.FC = () => {
   const handleLogoUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file || !restaurant) return;
+    
     setUploadingLogo(true);
+    setLogoError(null);
+    
     try {
-      const fileName = `${restaurant.id}/logo-${Date.now()}-${file.name}`;
-      const url = await uploadFile('restaurant-logos', fileName, file);
-      setProfileData(prev => ({ ...prev, logo_url: url }));
-    } catch (err) {
-      alert('Logo upload failed');
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${restaurant.id}/logo-${Date.now()}.${fileExt}`;
+      
+      const { error } = await supabase.storage
+        .from('restaurant-logos')
+        .upload(fileName, file, {
+          cacheControl: '3600',
+          upsert: true
+        });
+      
+      if (error) throw error;
+      
+      const { data } = supabase.storage
+        .from('restaurant-logos')
+        .getPublicUrl(fileName);
+      
+      setProfileData(prev => ({ ...prev, logo_url: data.publicUrl }));
+    } catch (err: any) {
+      console.error('Logo upload error:', err);
+      setLogoError('Upload failed: ' + (err.message || 'Unknown error'));
     } finally {
       setUploadingLogo(false);
     }
@@ -117,14 +143,44 @@ const Onboarding: React.FC = () => {
   };
 
   const handleStep1Submit = async () => {
-    if (!restaurant) return;
+    console.log('Step 1 continue clicked', { 
+      restaurantName: profileData.name, 
+      slug: profileData.slug, 
+      logoUrl: profileData.logo_url, 
+      brandColor: profileData.primary_color 
+    });
+
+    if (!restaurant?.id) return;
+    
+    if (!profileData.name.trim()) {
+      alert('Please enter your restaurant name');
+      return;
+    }
+
+    if (slugStatus === 'taken') {
+      alert('This URL is already taken. Please choose another.');
+      return;
+    }
+
     setLoading(true);
     try {
-      await updateRestaurant(restaurant.id, profileData);
+      const { error } = await supabase
+        .from('restaurants')
+        .update({
+          name: profileData.name,
+          slug: profileData.slug,
+          logo_url: profileData.logo_url || null,
+          primary_color: profileData.primary_color
+        })
+        .eq('id', restaurant.id);
+
+      if (error) throw error;
+
       setRestaurant({ ...restaurant, ...profileData });
-      nextStep();
-    } catch (err) {
-      alert('Failed to save profile');
+      setStep(2);
+    } catch (err: any) {
+      console.error('Failed to save profile:', err);
+      alert('Failed to save profile: ' + err.message);
     } finally {
       setLoading(false);
     }
@@ -318,27 +374,56 @@ const Onboarding: React.FC = () => {
                     </p>
                   </div>
 
-                  <div className="space-y-3">
-                    <label className="text-xs font-bold uppercase tracking-wider text-[#707971] ml-1">Restaurant Logo</label>
-                    <div className="flex items-center gap-6">
-                      <div className="w-20 h-20 rounded-2xl border border-surface-container bg-[#FAFAF8] flex items-center justify-center overflow-hidden shrink-0">
-                        {profileData.logo_url ? (
-                          <img src={profileData.logo_url} alt="Logo" className="max-w-full max-h-full object-contain" />
-                        ) : (
-                          <ImageIcon size={24} className="text-[#E8E8E4]" />
-                        )}
+                    <div className="space-y-3">
+                      <label className="text-xs font-bold uppercase tracking-wider text-[#707971] ml-1">Restaurant Logo</label>
+                      <div className="flex flex-col gap-4">
+                        <div className="flex items-center gap-6">
+                          <div className="w-20 h-20 rounded-2xl border border-surface-container bg-[#FAFAF8] flex items-center justify-center overflow-hidden shrink-0">
+                            {profileData.logo_url ? (
+                              <img src={profileData.logo_url} alt="Logo" className="w-full h-full object-cover" />
+                            ) : (
+                              <ImageIcon size={24} className="text-[#E8E8E4]" />
+                            )}
+                          </div>
+                          <label className="flex-1 flex flex-col items-center justify-center h-20 rounded-2xl border-2 border-dashed border-surface-container hover:border-primary/50 transition-all cursor-pointer bg-white">
+                            {uploadingLogo ? (
+                              <div className="flex flex-col items-center gap-1">
+                                <Loader2 className="animate-spin text-primary" size={20} />
+                                <span className="text-[10px] font-bold text-primary uppercase tracking-widest">Uploading...</span>
+                              </div>
+                            ) : (
+                              <>
+                                <Upload size={18} className="text-[#707971] mb-1" />
+                                <span className="text-[10px] font-bold text-[#707971] uppercase tracking-widest">Change Logo</span>
+                              </>
+                            )}
+                            <input type="file" className="hidden" accept="image/*" onChange={handleLogoUpload} disabled={uploadingLogo} />
+                          </label>
+                        </div>
+                        
+                        {/* Status Messages */}
+                        <div className="px-1">
+                          {uploadingLogo && (
+                            <p className="text-[11px] text-primary font-medium flex items-center gap-1.5">
+                              <Loader2 size={12} className="animate-spin" /> Uploading logo...
+                            </p>
+                          )}
+                          {profileData.logo_url && !uploadingLogo && (
+                            <div className="flex items-center gap-1.5">
+                              <div className="w-16 h-16 rounded-full border-2 border-primary overflow-hidden shadow-sm">
+                                <img src={profileData.logo_url} className="w-full h-full object-cover" />
+                              </div>
+                              <p className="text-[11px] text-emerald-600 font-bold uppercase tracking-wider">Logo uploaded ✓</p>
+                            </div>
+                          )}
+                          {logoError && (
+                            <p className="text-[11px] text-red-500 font-medium">
+                              {logoError}
+                            </p>
+                          )}
+                        </div>
                       </div>
-                      <label className="flex-1 flex flex-col items-center justify-center h-20 rounded-2xl border-2 border-dashed border-surface-container hover:border-primary/50 transition-all cursor-pointer">
-                        {uploadingLogo ? <Loader2 className="animate-spin text-primary" /> : (
-                          <>
-                            <Upload size={18} className="text-[#707971] mb-1" />
-                            <span className="text-[10px] font-bold text-[#707971] uppercase tracking-widest">Upload Logo</span>
-                          </>
-                        )}
-                        <input type="file" className="hidden" accept="image/*" onChange={handleLogoUpload} />
-                      </label>
                     </div>
-                  </div>
 
                   <div className="space-y-3">
                     <label className="text-xs font-bold uppercase tracking-wider text-[#707971] ml-1">Brand Color</label>
@@ -368,7 +453,12 @@ const Onboarding: React.FC = () => {
                   className="w-full h-14 font-bold text-lg"
                   disabled={loading || !profileData.name || !profileData.slug || slugStatus === 'taken'}
                 >
-                  {loading ? <Loader2 className="animate-spin" /> : 'Looks great, continue →'}
+                  {loading ? (
+                    <div className="flex items-center gap-2">
+                      <Loader2 className="animate-spin" /> 
+                      <span>Saving...</span>
+                    </div>
+                  ) : 'Looks great, continue →'}
                 </Button>
               </div>
             )}
