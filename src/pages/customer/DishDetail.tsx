@@ -81,7 +81,7 @@ const DishDetail: React.FC = () => {
         {/* Hero Section */}
         <div className="relative w-full h-[45vh] overflow-hidden">
           <img 
-            src={dish.image_url} 
+            src={dish.photo_url ?? undefined} 
             alt={dish.name} 
             className="w-full h-full object-cover"
           />

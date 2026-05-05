@@ -170,7 +170,7 @@ const OrderManageModal: React.FC<OrderManageModalProps> = ({ isOpen, onClose, or
                 {items.map(item => (
                   <div key={item.id} className="flex gap-4 border-b border-surface-container pb-4 last:border-0 last:pb-0">
                     <img 
-                      src={item.menu_items.image_url} 
+                      src={item.menu_items.photo_url ?? undefined} 
                       alt={item.menu_items.name}
                       className="w-16 h-16 rounded-xl object-cover"
                     />

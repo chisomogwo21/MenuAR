@@ -23,23 +23,23 @@ export interface Category {
   id: string;
   restaurant_id: string;
   name: string;
-  image_url?: string;
+  photo_url?: string;
   sort_order: number;
 }
 
 export interface MenuItem {
-  id: string;
-  restaurant_id: string;
-  category_id: string;
-  name: string;
-  description: string;
-  price: number;
-  image_url: string;
-  model_url?: string;
-  is_available: boolean;
-  calories?: number;
-  preparation_time?: number;
-  allergens?: string[];
+  id: string
+  restaurant_id: string
+  category_id: string
+  name: string
+  description: string
+  price: number
+  photo_url: string | null
+  model_url: string | null
+  is_available: boolean
+  calories: number | null
+  allergens: string[]
+  created_at: string
 }
 
 export interface Table {

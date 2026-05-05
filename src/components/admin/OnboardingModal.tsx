@@ -50,7 +50,10 @@ const OnboardingModal: React.FC<OnboardingModalProps> = ({ restaurant, onComplet
             name: itemName,
             description: 'Our first delicious menu item.',
             price: parseFloat(itemPrice),
-            image_url: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=600&auto=format&fit=crop',
+            photo_url: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=600&auto=format&fit=crop',
+            model_url: null,
+            calories: null,
+            allergens: [],
             is_available: true
           });
         }

@@ -40,7 +40,7 @@ const DishDrawer: React.FC<DishDrawerProps> = ({ isOpen, onClose, dish, onSucces
     calories: 0,
     allergens: [] as string[],
     is_available: true,
-    image_url: '',
+    photo_url: '',
     model_url: ''
   });
 
@@ -60,7 +60,7 @@ const DishDrawer: React.FC<DishDrawerProps> = ({ isOpen, onClose, dish, onSucces
         calories: dish.calories || 0,
         allergens: dish.allergens || [],
         is_available: dish.is_available,
-        image_url: dish.image_url,
+        photo_url: dish.photo_url || '',
         model_url: dish.model_url || ''
       });
       setImageFile(null);
@@ -73,7 +73,7 @@ const DishDrawer: React.FC<DishDrawerProps> = ({ isOpen, onClose, dish, onSucces
         calories: 0,
         allergens: [],
         is_available: true,
-        image_url: '',
+        photo_url: '',
         model_url: ''
       });
       setImageFile(null);
@@ -90,7 +90,7 @@ const DishDrawer: React.FC<DishDrawerProps> = ({ isOpen, onClose, dish, onSucces
     try {
       const fileName = `${restaurant.id}/${Date.now()}-${file.name}`;
       const url = await uploadFile('dish-photos', fileName, file);
-      setFormData(prev => ({ ...prev, image_url: url }));
+      setFormData(prev => ({ ...prev, photo_url: url }));
     } catch (error) {
       alert('Upload failed');
     } finally {
@@ -100,7 +100,7 @@ const DishDrawer: React.FC<DishDrawerProps> = ({ isOpen, onClose, dish, onSucces
 
   const handleGenerate3D = async () => {
     if (!imageFile || !restaurant) {
-      if (!imageFile && formData.image_url) {
+      if (!imageFile && formData.photo_url) {
         alert("Please re-upload the photo to generate a 3D model with Tripo3D (requires original file).");
       }
       return;
@@ -178,9 +178,9 @@ const DishDrawer: React.FC<DishDrawerProps> = ({ isOpen, onClose, dish, onSucces
         <div className="space-y-3">
           <label className="text-xs font-bold text-primary uppercase tracking-widest">Dish Photo</label>
           <div className="relative group">
-            {formData.image_url ? (
+            {formData.photo_url ? (
               <div className="relative aspect-video rounded-2xl overflow-hidden bg-surface-container border-2 border-dashed border-primary/20">
-                <img src={formData.image_url} alt="Preview" className="w-full h-full object-cover" />
+                <img src={formData.photo_url} alt="Preview" className="w-full h-full object-cover" />
                 <label className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity cursor-pointer">
                   <Camera className="text-white" />
                   <input type="file" className="hidden" accept="image/*" onChange={handleImageUpload} />
@@ -203,7 +203,7 @@ const DishDrawer: React.FC<DishDrawerProps> = ({ isOpen, onClose, dish, onSucces
         </div>
 
         {/* 3D Generation */}
-        {formData.image_url && (
+        {formData.photo_url && (
           <div className="bg-primary/5 rounded-2xl p-4 border border-primary/10">
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-2">

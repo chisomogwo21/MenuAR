@@ -62,7 +62,7 @@ const Onboarding: React.FC = () => {
     calories: 0,
     allergens: [] as string[],
     is_available: true,
-    image_url: '',
+    photo_url: '',
     model_url: ''
   });
   const [dishFile, setDishFile] = useState<File | null>(null);
@@ -249,7 +249,7 @@ const Onboarding: React.FC = () => {
     try {
       const fileName = `${restaurant.id}/dish-${Date.now()}-${file.name}`;
       const url = await uploadFile('dish-photos', fileName, file);
-      setDishData(prev => ({ ...prev, image_url: url }));
+      setDishData(prev => ({ ...prev, photo_url: url }));
     } catch (err) {
       alert('Photo upload failed');
     } finally {
@@ -302,14 +302,14 @@ const Onboarding: React.FC = () => {
         .from('menu_items')
         .insert({
           name: dishData.name.trim(),
-          description: dishData.description?.trim(),
+          description: dishData.description?.trim() || '',
           price: dishData.price,
           category_id: dishData.category_id,
           restaurant_id: restaurant.id,
-          image_url: dishData.image_url || null,
+          photo_url: dishData.photo_url || null,
           model_url: dishData.model_url || null,
           calories: dishData.calories || null,
-          allergens: dishData.allergens,
+          allergens: dishData.allergens || [],
           is_available: true
         })
         .select()
@@ -334,7 +334,7 @@ const Onboarding: React.FC = () => {
           calories: 0,
           allergens: [],
           is_available: true,
-          image_url: '',
+          photo_url: '',
           model_url: ''
         }));
         setDishFile(null);
@@ -646,8 +646,8 @@ const Onboarding: React.FC = () => {
                     <div className="space-y-4">
                       <label className="text-xs font-bold text-primary uppercase tracking-widest ml-1 block">Photo</label>
                       <label className="block aspect-square w-full rounded-[32px] border-2 border-dashed border-surface-container hover:border-primary/50 transition-all cursor-pointer relative overflow-hidden bg-background">
-                        {dishData.image_url ? (
-                          <img src={dishData.image_url} alt="Preview" className="w-full h-full object-cover" />
+                        {dishData.photo_url ? (
+                          <img src={dishData.photo_url ?? undefined} alt="Preview" className="w-full h-full object-cover" />
                         ) : uploadingDish ? (
                           <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/80 backdrop-blur-sm z-10">
                             <Loader2 className="animate-spin text-primary mb-2" />
@@ -664,7 +664,7 @@ const Onboarding: React.FC = () => {
                     </div>
                   </div>
 
-                  {dishData.image_url && (
+                  {dishData.photo_url && (
                     <div className="animate-in slide-in-from-top-2 duration-300">
                       {generating ? (
                         <div className="bg-primary/5 rounded-2xl p-4 space-y-3 border border-primary/10">
@@ -724,7 +724,7 @@ const Onboarding: React.FC = () => {
                   <Button 
                     onClick={handleAddDish}
                     className="w-full h-14 font-bold"
-                    disabled={loading || !dishData.name || !dishData.image_url}
+                    disabled={loading || !dishData.name || !dishData.photo_url}
                   >
                     {loading ? (
                       <div className="flex items-center gap-2">
@@ -740,7 +740,7 @@ const Onboarding: React.FC = () => {
                       <div className="flex flex-wrap gap-3 justify-center">
                         {dishesAdded.map(d => (
                           <div key={d.id} className="w-12 h-12 rounded-xl overflow-hidden border border-surface-container">
-                            <img src={d.image_url} alt="" className="w-full h-full object-cover" />
+                            <img src={d.photo_url ?? undefined} alt="" className="w-full h-full object-cover" />
                           </div>
                         ))}
                       </div>

@@ -120,7 +120,7 @@ const MenuManager: React.FC = () => {
                   {/* Image */}
                   <div className="relative h-48 w-full overflow-hidden">
                     <img
-                      src={item.image_url}
+                      src={item.photo_url ?? undefined}
                       alt={item.name}
                       className={`w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ${!item.is_available ? 'grayscale opacity-70' : ''}`}
                     />

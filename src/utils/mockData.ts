@@ -27,12 +27,12 @@ export const mockMenuItems: MenuItem[] = [
     name: 'Peri-Peri Chicken Wings',
     description: 'Spicy flame-grilled wings with a citrus-herb kick.',
     price: 12.00,
-    image_url: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAhuBCQBgJZ7bPta_267htvU_YVTx1eZBpnVPvGaTKqFUsxBTQnjhmEvE_DZiOD27wUWI1ypKBfeJlmdmdDZV51IRaMkUQUhIFbTsiTe2ZSCmYIQgLSQ8sinM70JnWwEL_p18iMug8Ep780OLpaQgI01lH4LSd_XmRNxSWUw8PK2E14lKfsIdF5ApvEKCLK7BOO-51IoNwIIE1O8rCbSquIuX5rdT1PCzS4H9glt-r60_2s9llqj_sfUbMG1dqe2OboFLJfaGcEyOy2',
+    photo_url: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAhuBCQBgJZ7bPta_267htvU_YVTx1eZBpnVPvGaTKqFUsxBTQnjhmEvE_DZiOD27wUWI1ypKBfeJlmdmdDZV51IRaMkUQUhIFbTsiTe2ZSCmYIQgLSQ8sinM70JnWwEL_p18iMug8Ep780OLpaQgI01lH4LSd_XmRNxSWUw8PK2E14lKfsIdF5ApvEKCLK7BOO-51IoNwIIE1O8rCbSquIuX5rdT1PCzS4H9glt-r60_2s9llqj_sfUbMG1dqe2OboFLJfaGcEyOy2',
     is_available: true,
     calories: 450,
-    preparation_time: 15,
     model_url: 'https://example.com/models/wings.glb',
-    allergens: ['Dairy']
+    allergens: ['Dairy'],
+    created_at: new Date().toISOString()
   },
   {
     id: 'item-2',
@@ -41,12 +41,12 @@ export const mockMenuItems: MenuItem[] = [
     name: 'Grilled Ribeye Steak',
     description: '300g grass-fed beef with peppercorn reduction.',
     price: 34.00,
-    image_url: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB8ymWSmjSAjg1y0_DldOEjIqQSp6-5iRYa74LuaR5h19eSBqQXrDbvBe1JMPDJ8B84ObUkvO0lIo0uBp4bLzsJywuZfg-x9vBqejfRf02DBbDyaZ7SR4vFWOLy0uV0s9_Bm9w3Db0AVWaAu7jj6W8p-IJvkdfAiU3hqrLboFAEsH5N5P3UbsIfn5EzjPXZHZ8KjG0uMO6SM35xFWv2AyfPoXPLyKCnWvIIgOKaSK1Rpvv6PY-yB24uPQEGkxV7T3i6DcyElPsgf-Mt',
+    photo_url: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB8ymWSmjSAjg1y0_DldOEjIqQSp6-5iRYa74LuaR5h19eSBqQXrDbvBe1JMPDJ8B84ObUkvO0lIo0uBp4bLzsJywuZfg-x9vBqejfRf02DBbDyaZ7SR4vFWOLy0uV0s9_Bm9w3Db0AVWaAu7jj6W8p-IJvkdfAiU3hqrLboFAEsH5N5P3UbsIfn5EzjPXZHZ8KjG0uMO6SM35xFWv2AyfPoXPLyKCnWvIIgOKaSK1Rpvv6PY-yB24uPQEGkxV7T3i6DcyElPsgf-Mt',
     is_available: true,
     calories: 850,
-    preparation_time: 25,
     model_url: 'https://example.com/models/ribeye.glb',
-    allergens: ['Gluten-free', 'Dairy-free']
+    allergens: ['Gluten-free', 'Dairy-free'],
+    created_at: new Date().toISOString()
   },
   {
     id: 'item-3',
@@ -55,12 +55,12 @@ export const mockMenuItems: MenuItem[] = [
     name: 'Roasted Lamb Chops',
     description: 'Tender Karoo lamb with mint infused jus.',
     price: 38.00,
-    image_url: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB_mumwvOvbM0XXZDX0WMVZjP_ShFSYfOsK81wdiZenwBGwAd_HAKN5Ao9Hld-ua4YgTcvKyLcHy01_KM459j1WVGlUO8zHhTHMb60j31D5FPZLx2qa8hBecTWYQYgS3KewbyBCAcMdXb6N2JK5mNe4mVPY_PZSRlM-WC7BkQW657Xgr4of0v5yG3DoDLOO2OjSoPov54C7mia_RhG2E80477hvgE4XYrUcoJYF12Ft9FtQB8LM7lIrGRkURHfr61ekKt9kLiwcW6tH',
+    photo_url: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB_mumwvOvbM0XXZDX0WMVZjP_ShFSYfOsK81wdiZenwBGwAd_HAKN5Ao9Hld-ua4YgTcvKyLcHy01_KM459j1WVGlUO8zHhTHMb60j31D5FPZLx2qa8hBecTWYQYgS3KewbyBCAcMdXb6N2JK5mNe4mVPY_PZSRlM-WC7BkQW657Xgr4of0v5yG3DoDLOO2OjSoPov54C7mia_RhG2E80477hvgE4XYrUcoJYF12Ft9FtQB8LM7lIrGRkURHfr61ekKt9kLiwcW6tH',
     is_available: true,
     calories: 720,
-    preparation_time: 20,
     model_url: 'https://example.com/models/lamb.glb',
-    allergens: ['Nuts']
+    allergens: ['Nuts'],
+    created_at: new Date().toISOString()
   },
   {
     id: 'item-4',
@@ -69,11 +69,12 @@ export const mockMenuItems: MenuItem[] = [
     name: 'Mango Cheesecake',
     description: 'Tropical Alfonso mango on a buttery crust.',
     price: 9.00,
-    image_url: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBAxeSWH8Vpd6jGYTzSjh60LZylE61591Pvpu-jfdFufLLNPdZeXlzpatWLEl-3tb49f6w0obXdhEDXp0csUuGmSv_6-WcL0l-GHBOR2bVwnScUyWSwRNNW8IZWL7XoYHuMuT2C1fHh1idAA4O8mD09b4Unnst48MTiJo8DAkm9UxsdzuIkteAMiPPF9lvcniCdKDb2EkFkljq3KZxGl_-YSlvrEtDiwCH8w31q5_iYtacJ2FwdpXj6DBhz1Z4QDOIl82Bfpjr_c0jb',
+    photo_url: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBAxeSWH8Vpd6jGYTzSjh60LZylE61591Pvpu-jfdFufLLNPdZeXlzpatWLEl-3tb49f6w0obXdhEDXp0csUuGmSv_6-WcL0l-GHBOR2bVwnScUyWSwRNNW8IZWL7XoYHuMuT2C1fHh1idAA4O8mD09b4Unnst48MTiJo8DAkm9UxsdzuIkteAMiPPF9lvcniCdKDb2EkFkljq3KZxGl_-YSlvrEtDiwCH8w31q5_iYtacJ2FwdpXj6DBhz1Z4QDOIl82Bfpjr_c0jb',
     is_available: true,
     calories: 420,
-    preparation_time: 10,
-    model_url: 'https://example.com/models/cheesecake.glb'
+    model_url: 'https://example.com/models/cheesecake.glb',
+    allergens: [],
+    created_at: new Date().toISOString()
   },
   {
     id: 'item-5',
@@ -82,10 +83,12 @@ export const mockMenuItems: MenuItem[] = [
     name: 'Zanzibar Spiced Ribeye',
     description: '300g premium ribeye rubbed with secret blend of Zanzibar spices.',
     price: 32.50,
-    image_url: 'https://images.unsplash.com/photo-1546241072-48010ad28c2c?w=400&h=400&fit=crop',
+    photo_url: 'https://images.unsplash.com/photo-1546241072-48010ad28c2c?w=400&h=400&fit=crop',
     is_available: true,
     calories: 850,
-    preparation_time: 25
+    model_url: null,
+    allergens: [],
+    created_at: new Date().toISOString()
   },
   {
     id: 'item-6',
@@ -94,10 +97,12 @@ export const mockMenuItems: MenuItem[] = [
     name: 'Baobab & Berry Fizz',
     description: 'Refreshing mocktail with baobab powder and fresh berries.',
     price: 8.50,
-    image_url: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=400&h=400&fit=crop',
+    photo_url: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=400&h=400&fit=crop',
     is_available: true,
     calories: 120,
-    preparation_time: 5
+    model_url: null,
+    allergens: [],
+    created_at: new Date().toISOString()
   }
 ];
 

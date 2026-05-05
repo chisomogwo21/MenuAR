@@ -131,7 +131,7 @@ const AIAssistant: React.FC = () => {
                   {msg.recommendations.map((dish) => (
                     <div key={dish.id} className="bg-white border border-surface-container rounded-2xl p-3 flex gap-3 shadow-sm">
                       <img
-                        src={dish.image_url}
+                        src={dish.photo_url ?? undefined}
                         alt={dish.name}
                         className="w-20 h-20 rounded-xl object-cover shrink-0"
                       />

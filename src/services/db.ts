@@ -85,7 +85,7 @@ export async function fetchMenuItemById(id: string): Promise<MenuItem | null> {
   return data as MenuItem;
 }
 
-export async function insertMenuItem(item: Omit<MenuItem, 'id'>): Promise<MenuItem | null> {
+export async function insertMenuItem(item: Omit<MenuItem, 'id' | 'created_at'>): Promise<MenuItem | null> {
   const { data, error } = await supabase.from('menu_items').insert(item).select().single();
   if (error) { console.error('insertMenuItem:', error); return null; }
   return data as MenuItem;

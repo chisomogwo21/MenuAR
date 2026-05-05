@@ -17,7 +17,7 @@ const DishCard: React.FC<DishCardProps> = ({ dish }) => {
       <Card className="mb-4 active:scale-[0.98] transition-transform">
         <div className="relative h-44 w-full">
           <img 
-            src={dish.image_url} 
+            src={dish.photo_url ?? undefined} 
             alt={dish.name} 
             className="w-full h-full object-cover"
           />

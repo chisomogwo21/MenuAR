@@ -45,9 +45,9 @@ const ARPreview: React.FC = () => {
         {/* AR View Stub */}
         <div className="absolute inset-0 z-0">
           <ARViewer 
-            modelUrl={dish.model_url || undefined} 
+            modelUrl={dish.model_url ?? undefined} 
             dishName={dish.name}
-            imageUrl={dish.image_url}
+            imageUrl={dish.photo_url ?? undefined}
           />
         </div>
 
