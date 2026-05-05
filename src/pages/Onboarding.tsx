@@ -18,10 +18,10 @@ import { supabase } from '../lib/supabase';
 import Button from '../components/ui/Button';
 import Input from '../components/ui/Input';
 import { uploadFile } from '../services/storage';
-import { fetchCategories, insertCategory, insertMenuItem, updateRestaurant, insertTables } from '../services/db';
+import { fetchCategories, insertCategory, insertMenuItem, insertTables } from '../services/db';
 import { useImageTo3D } from '../hooks/useImageTo3D';
 import { generateTableQRsZip, generateTableQRsPDF } from '../utils/qrGenerator';
-import type { MenuItem } from '../types';
+import type { MenuItem, Category } from '../types';
 
 // PDF and ZIP will be imported later when used
 // import { jsPDF } from 'jspdf';
