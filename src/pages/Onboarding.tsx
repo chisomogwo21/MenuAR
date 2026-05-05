@@ -50,6 +50,7 @@ const Onboarding: React.FC = () => {
   // Step 2 State: Categories
   const [newCategory, setNewCategory] = useState('');
   const [addedCategories, setAddedCategories] = useState<string[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
   const SUGGESTED_CATS = ['Starters', 'Mains', 'Grills', 'Desserts', 'Drinks', 'Pizza', 'Burgers', 'Salads', 'Specials'];
 
   // Step 3 State: First Dish
@@ -93,6 +94,21 @@ const Onboarding: React.FC = () => {
       navigate('/admin/login');
     }
   }, [restaurant?.id, authLoading, navigate]);
+
+  useEffect(() => {
+    if (step === 3 && restaurant?.id && categories.length === 0) {
+      loadCategories();
+    }
+  }, [step, restaurant?.id]);
+
+  const loadCategories = async () => {
+    if (!restaurant?.id) return;
+    const cats = await fetchCategories(restaurant.id);
+    setCategories(cats);
+    if (cats.length > 0 && !dishData.category_id) {
+      setDishData(prev => ({ ...prev, category_id: cats[0].id }));
+    }
+  };
 
   // Auth Protection
   if (authLoading) return <div className="min-h-screen flex items-center justify-center"><Loader2 className="animate-spin text-primary" /></div>;
@@ -207,10 +223,11 @@ const Onboarding: React.FC = () => {
       }
       // Re-fetch categories to get IDs for Step 3
       const cats = await fetchCategories(restaurant.id);
+      setCategories(cats);
       if (cats.length > 0) {
         setDishData(prev => ({ ...prev, category_id: cats[0].id }));
       }
-      nextStep();
+      setStep(3);
     } catch (err) {
       alert('Failed to save categories');
     } finally {
@@ -246,19 +263,38 @@ const Onboarding: React.FC = () => {
   };
 
   const handleAddDish = async () => {
-    if (!restaurant || !dishData.name || !dishData.category_id || !dishData.price) return;
+    console.log('Add dish clicked', { dishData, restaurantId: restaurant?.id });
+    
+    if (!restaurant?.id) return;
+    
+    if (!dishData.name.trim()) {
+      alert('Please enter a dish name');
+      return;
+    }
+
+    if (!dishData.category_id) {
+      alert('Please select a category');
+      return;
+    }
+
+    if (!dishData.price || isNaN(dishData.price)) {
+      alert('Please enter a valid price');
+      return;
+    }
+
     setLoading(true);
     try {
       const newItem = await insertMenuItem({
         ...dishData,
         restaurant_id: restaurant.id
       });
+      
       if (newItem) {
         setDishesAdded(prev => [...prev, newItem]);
         // Reset form for "Add another"
-        setDishData({
+        setDishData(prev => ({
+          ...prev,
           name: '',
-          category_id: dishData.category_id,
           price: 0,
           description: '',
           calories: 0,
@@ -266,11 +302,12 @@ const Onboarding: React.FC = () => {
           is_available: true,
           image_url: '',
           ar_model_url: ''
-        });
+        }));
         setDishFile(null);
       }
-    } catch (err) {
-      alert('Failed to add dish');
+    } catch (err: any) {
+      console.error('Failed to add dish:', err);
+      alert('Failed to add dish: ' + (err.message || 'Unknown error'));
     } finally {
       setLoading(false);
     }
@@ -560,7 +597,7 @@ const Onboarding: React.FC = () => {
                           value={dishData.category_id}
                           onChange={e => setDishData(prev => ({ ...prev, category_id: e.target.value }))}
                         >
-                          {addedCategories.map(cat => <option key={cat} value={cat}>{cat}</option>)}
+                          {categories.map(cat => <option key={cat.id} value={cat.id}>{cat.name}</option>)}
                         </select>
                       </div>
                       <Input 
@@ -632,7 +669,12 @@ const Onboarding: React.FC = () => {
                     className="w-full h-14 font-bold"
                     disabled={loading || !dishData.name || !dishData.image_url}
                   >
-                    {loading ? <Loader2 className="animate-spin" /> : 'Add this dish'}
+                    {loading ? (
+                      <div className="flex items-center gap-2">
+                        <Loader2 className="animate-spin" />
+                        <span>Adding...</span>
+                      </div>
+                    ) : 'Add this dish'}
                   </Button>
                   
                   {dishesAdded.length > 0 && (

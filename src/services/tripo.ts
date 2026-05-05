@@ -1,104 +1,71 @@
-const TRIPO_API_KEY = import.meta.env.VITE_TRIPO_API_KEY
-const TRIPO_BASE_URL = 'https://api.tripo3d.ai/v2/openapi'
+import { supabase } from '../lib/supabase'
 
-// STEP 1 — Upload image and create task
 export async function submitImageTo3D(
   imageFile: File
 ): Promise<string> {
-  
-  // First upload the image to Tripo
-  const formData = new FormData()
-  formData.append('file', imageFile)
-  
-  const uploadRes = await fetch(
-    `${TRIPO_BASE_URL}/upload`,
-    {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${TRIPO_API_KEY}`
-      },
-      body: formData
+  // Convert file to base64
+  const base64 = await new Promise<string>(
+    (resolve, reject) => {
+      const reader = new FileReader()
+      reader.onload = () => {
+        const result = reader.result as string
+        resolve(result.split(',')[1])
+      }
+      reader.onerror = reject
+      reader.readAsDataURL(imageFile)
     }
   )
   
-  if (!uploadRes.ok) {
-    const err = await uploadRes.json()
-    throw new Error(err.message || 'Image upload failed')
-  }
+  const fileType = imageFile.name
+    .split('.').pop()?.toLowerCase() || 'jpg'
   
-  const uploadData = await uploadRes.json()
-  const imageToken = uploadData.data.image_token
+  const { data, error } = await supabase
+    .functions.invoke('tripo-proxy', {
+      body: { 
+        action: 'upload', 
+        imageBase64: base64,
+        fileType 
+      }
+    })
   
-  // Then create the image-to-3D task
-  const taskRes = await fetch(
-    `${TRIPO_BASE_URL}/task`,
-    {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${TRIPO_API_KEY}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        type: 'image_to_model',
-        file: {
-          type: 'jpg',
-          file_token: imageToken
-        }
-      })
-    }
-  )
+  if (error) throw error
+  if (data.error) throw new Error(data.error)
   
-  if (!taskRes.ok) {
-    const err = await taskRes.json()
-    throw new Error(err.message || 'Task creation failed')
-  }
-  
-  const taskData = await taskRes.json()
-  return taskData.data.task_id
+  return data.task_id
 }
 
-// STEP 2 — Poll for task completion
 export async function pollTripoTask(
   taskId: string
 ): Promise<string> {
   const maxAttempts = 40
   const pollInterval = 6000
   
-  for (let attempt = 0; attempt < maxAttempts; attempt++) {
-    await new Promise(resolve => 
-      setTimeout(resolve, pollInterval)
+  for (let i = 0; i < maxAttempts; i++) {
+    await new Promise(r => 
+      setTimeout(r, pollInterval)
     )
     
-    const res = await fetch(
-      `${TRIPO_BASE_URL}/task/${taskId}`,
-      {
-        headers: {
-          'Authorization': `Bearer ${TRIPO_API_KEY}`
-        }
-      }
-    )
+    const { data, error } = await supabase
+      .functions.invoke('tripo-proxy', {
+        body: { action: 'poll', taskId }
+      })
     
-    const data = await res.json()
-    const task = data.data
+    if (error) throw error
     
-    if (task.status === 'success') {
-      // Return the GLB model URL
-      return task.output.model
+    if (data.status === 'success') {
+      return data.output.model
     }
     
-    if (task.status === 'failed') {
+    if (data.status === 'failed') {
       throw new Error(
-        '3D generation failed. Try a photo with ' +
-        'a cleaner background.'
+        'Generation failed: ' + 
+        (data.error?.message || 
+         'Try a photo with clean background')
       )
     }
-    
-    // status: queued or running — keep polling
   }
   
-  throw new Error(
-    '3D generation timed out. Please try again.'
-  )
+  throw new Error('Generation timed out')
 }
 
 // STEP 3 — Download GLB and save to Supabase
