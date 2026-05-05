@@ -119,16 +119,28 @@ const Signup: React.FC = () => {
       if (restError) throw restError;
 
       // 4. Update user with restaurant_id
-      const { error: userError } = await supabase
+      const { data: existingUser } = await supabase
         .from('users')
-        .insert({
-          id: authData.user.id,
-          email: formData.email,
-          role: 'restaurant_admin',
-          restaurant_id: restaurant.id
-        });
+        .select('id')
+        .eq('email', formData.email)
+        .single();
 
-      if (userError) throw userError;
+      if (!existingUser) {
+        const { error: userError } = await supabase
+          .from('users')
+          .upsert({
+            id: authData.user.id,
+            email: formData.email,
+            password_hash: 'supabase-auth-managed',
+            role: 'restaurant_admin',
+            restaurant_id: restaurant.id
+          }, { 
+            onConflict: 'email',
+            ignoreDuplicates: false 
+          });
+
+        if (userError) throw userError;
+      }
 
       // 5. Create notification for super admin
       await supabase.from('notifications').insert({

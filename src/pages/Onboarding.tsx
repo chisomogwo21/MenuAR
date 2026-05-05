@@ -259,11 +259,13 @@ const Onboarding: React.FC = () => {
 
   const handleGenerate3D = async () => {
     if (!dishFile || !restaurant) return;
+    setDishError(null);
     try {
       const modelUrl = await generateModel(dishFile, 'new-onboarding-item');
       setDishData(prev => ({ ...prev, model_url: modelUrl }));
     } catch (err: any) {
-      alert(err.message);
+      console.error(err);
+      setDishError('3D generation failed. Add the dish without a 3D model and generate it later from Menu Manager.');
     }
   };
 
@@ -679,17 +681,17 @@ const Onboarding: React.FC = () => {
                             <span>{genProgress}%</span>
                           </div>
                         </div>
-                      ) : genStatus === 'failed' ? (
-                        <div className="space-y-4">
-                          <div className="bg-red-50 text-red-600 p-4 rounded-2xl text-xs border border-red-100">
-                            3D generation failed. You can still add this dish and generate the 3D model later from your Menu Manager dashboard.
+                      ) : dishError ? (
+                        <div className="space-y-3">
+                          <div className="text-red-600 text-xs text-center font-medium bg-red-50 border border-red-100 p-4 rounded-2xl">
+                            {dishError}
                           </div>
                           <Button 
                             variant="secondary" 
                             className="w-full border-green-600 text-green-600 hover:bg-green-50"
                             onClick={handleAddDish}
                           >
-                            Skip 3D, add dish anyway
+                            Add dish without 3D model
                           </Button>
                         </div>
                       ) : dishData.model_url ? (
@@ -715,7 +717,8 @@ const Onboarding: React.FC = () => {
                   )}
                 </div>
 
-                  {dishError && (
+                  {/* Validation errors (name, category, price) */}
+                  {dishError && !dishData.photo_url && (
                     <div className="bg-red-50 text-red-600 p-4 rounded-xl text-sm border border-red-100 animate-in fade-in slide-in-from-top-2">
                       {dishError}
                     </div>

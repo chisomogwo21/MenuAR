@@ -23,6 +23,7 @@ const DishDrawer: React.FC<DishDrawerProps> = ({ isOpen, onClose, dish, onSucces
   const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(false);
   const [uploading, setUploading] = useState(false);
+  const [modelError, setModelError] = useState<string | null>(null);
   const [imageFile, setImageFile] = useState<File | null>(null);
   
   const { 
@@ -107,11 +108,12 @@ const DishDrawer: React.FC<DishDrawerProps> = ({ isOpen, onClose, dish, onSucces
     }
 
     try {
+      setModelError(null);
       const id = dish?.id || 'new-item';
       const modelUrl = await generateModel(imageFile, id);
       setFormData(prev => ({ ...prev, model_url: modelUrl }));
     } catch (error: any) {
-      alert(error.message);
+      setModelError('3D generation failed. Add the dish without a 3D model and generate it later from Menu Manager.');
     }
   };
 
@@ -226,6 +228,20 @@ const DishDrawer: React.FC<DishDrawerProps> = ({ isOpen, onClose, dish, onSucces
                   />
                 </div>
                 <p className="text-[10px] font-bold text-primary uppercase text-center">{generationStatus}</p>
+              </div>
+            ) : modelError ? (
+              <div className="space-y-4">
+                <div className="text-red-600 text-xs text-center font-medium">
+                  {modelError}
+                </div>
+                <Button 
+                  type="button"
+                  variant="secondary" 
+                  className="w-full border-green-600 text-green-600 hover:bg-green-50"
+                  onClick={handleSave}
+                >
+                  Add dish without 3D model
+                </Button>
               </div>
             ) : (
               <Button 

@@ -22,8 +22,8 @@ const OnboardingModal: React.FC<OnboardingModalProps> = ({ restaurant, onComplet
   const [categoryName, setCategoryName] = useState('Main Course');
 
   // Step 3: Menu Item
-  const [itemName, setItemName] = useState('Signature Dish');
-  const [itemPrice, setItemPrice] = useState('19.99');
+  const [itemName, setItemName] = useState('');
+  const [itemPrice, setItemPrice] = useState('');
 
   // Step 4: Table
   const [tableNumber, setTableNumber] = useState('01');
@@ -43,14 +43,14 @@ const OnboardingModal: React.FC<OnboardingModalProps> = ({ restaurant, onComplet
           .select()
           .single();
         
-        if (cat) {
+        if (cat && itemName.trim()) {
           await insertMenuItem({
             restaurant_id: restaurant.id,
             category_id: cat.id,
-            name: itemName,
-            description: 'Our first delicious menu item.',
-            price: parseFloat(itemPrice),
-            photo_url: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=600&auto=format&fit=crop',
+            name: itemName.trim(),
+            description: '',
+            price: parseFloat(itemPrice) || 0,
+            photo_url: null,
             model_url: null,
             calories: null,
             allergens: [],

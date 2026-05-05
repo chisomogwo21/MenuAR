@@ -3,13 +3,15 @@ import Sidebar from '../../components/admin/Sidebar';
 import { Plus, Download, Loader2 } from 'lucide-react';
 import Button from '../../components/ui/Button';
 import { useAppContext } from '../../context/AppContext';
-import { fetchTables, updateTable } from '../../services/db';
+import { fetchTables } from '../../services/db';
+import { supabase } from '../../lib/supabase';
 import type { Table } from '../../types';
 
 const Tables: React.FC = () => {
   const { restaurant } = useAppContext();
   const [tables, setTables] = useState<Table[]>([]);
   const [loading, setLoading] = useState(true);
+  const [toggleError, setToggleError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!restaurant) {
@@ -36,20 +38,29 @@ const Tables: React.FC = () => {
     return () => { cancelled = true; };
   }, [restaurant]);
 
-  const activeCount = tables.filter(t => t.status === 'active').length;
-  const inactiveCount = tables.filter(t => t.status === 'inactive').length;
+  const activeCount = tables.filter(t => t.is_active).length;
+  const inactiveCount = tables.filter(t => !t.is_active).length;
 
   const toggleTable = async (table: Table) => {
-    const newStatus = table.status === 'active' ? 'inactive' : 'active';
+    if (!restaurant) return;
+    setToggleError(null);
+    
+    const newStatus = !table.is_active;
     
     // Optimistic update
-    setTables(prev => prev.map(t => t.id === table.id ? { ...t, status: newStatus } : t));
+    setTables(prev => prev.map(t => t.id === table.id ? { ...t, is_active: newStatus } : t));
     
-    const success = await updateTable(table.id, { status: newStatus });
-    if (!success) {
-      // Revert
-      setTables(prev => prev.map(t => t.id === table.id ? { ...t, status: table.status } : t));
-      alert('Failed to update table status');
+    const { error } = await supabase
+      .from('tables')
+      .update({ is_active: newStatus })
+      .eq('id', table.id)
+      .eq('restaurant_id', restaurant.id);
+      
+    if (error) {
+      // Revert optimistic update
+      setTables(prev => prev.map(t => t.id === table.id ? { ...t, is_active: table.is_active } : t));
+      console.error('Table update error:', error);
+      setToggleError('Failed to update table: ' + error.message);
     }
   };
 
@@ -81,6 +92,13 @@ const Tables: React.FC = () => {
         </header>
 
         <div className="px-6 py-8 max-w-7xl mx-auto">
+          {/* Inline error */}
+          {toggleError && (
+            <div className="mb-6 bg-red-50 border border-red-100 text-red-600 p-4 rounded-2xl text-sm font-medium flex items-center justify-between">
+              <span>{toggleError}</span>
+              <button onClick={() => setToggleError(null)} className="ml-4 text-red-400 hover:text-red-600 font-bold">✕</button>
+            </div>
+          )}
           {/* Summary Bar */}
           <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
             <div>
@@ -112,7 +130,7 @@ const Tables: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {tables.map((table) => {
                 const qrUrl = getQrUrl(table);
-                const isActive = table.status === 'active';
+                const isActive = table.is_active;
                 return (
                   <div
                     key={table.id}

@@ -47,7 +47,7 @@ export interface Table {
   restaurant_id: string;
   table_number: string;
   qr_code_url: string;
-  status: 'active' | 'inactive';
+  is_active: boolean;
   capacity?: number;
 }
 
