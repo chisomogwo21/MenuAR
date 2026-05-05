@@ -21,7 +21,7 @@ const DishCard: React.FC<DishCardProps> = ({ dish }) => {
             alt={dish.name} 
             className="w-full h-full object-cover"
           />
-          {dish.ar_model_url && (
+          {dish.model_url && (
             <div className="absolute top-3 right-3 bg-[#D4A843] text-white p-1.5 rounded-full shadow-lg">
               <Camera size={18} />
             </div>

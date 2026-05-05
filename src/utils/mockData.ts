@@ -31,7 +31,7 @@ export const mockMenuItems: MenuItem[] = [
     is_available: true,
     calories: 450,
     preparation_time: 15,
-    ar_model_url: 'https://example.com/models/wings.glb',
+    model_url: 'https://example.com/models/wings.glb',
     allergens: ['Dairy']
   },
   {
@@ -45,7 +45,7 @@ export const mockMenuItems: MenuItem[] = [
     is_available: true,
     calories: 850,
     preparation_time: 25,
-    ar_model_url: 'https://example.com/models/ribeye.glb',
+    model_url: 'https://example.com/models/ribeye.glb',
     allergens: ['Gluten-free', 'Dairy-free']
   },
   {
@@ -59,7 +59,7 @@ export const mockMenuItems: MenuItem[] = [
     is_available: true,
     calories: 720,
     preparation_time: 20,
-    ar_model_url: 'https://example.com/models/lamb.glb',
+    model_url: 'https://example.com/models/lamb.glb',
     allergens: ['Nuts']
   },
   {
@@ -73,7 +73,7 @@ export const mockMenuItems: MenuItem[] = [
     is_available: true,
     calories: 420,
     preparation_time: 10,
-    ar_model_url: 'https://example.com/models/cheesecake.glb'
+    model_url: 'https://example.com/models/cheesecake.glb'
   },
   {
     id: 'item-5',

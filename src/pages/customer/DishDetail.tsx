@@ -141,7 +141,7 @@ const DishDetail: React.FC = () => {
 
               {/* Action Buttons */}
               <div className="flex flex-col gap-4">
-                {dish.ar_model_url && (
+                {dish.model_url && (
                   <Button 
                     variant="gold" 
                     className="h-14 w-full gap-2 text-lg shadow-sm"

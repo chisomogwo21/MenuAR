@@ -125,7 +125,7 @@ const MenuManager: React.FC = () => {
                       className={`w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ${!item.is_available ? 'grayscale opacity-70' : ''}`}
                     />
                     {/* AR Badge */}
-                    {item.ar_model_url && (
+                    {item.model_url && (
                       <div className="absolute top-3 right-3">
                         <span className="bg-primary/90 text-white text-[10px] font-bold px-2 py-1 rounded-full flex items-center gap-1 backdrop-blur-sm">
                           <Camera size={10} />

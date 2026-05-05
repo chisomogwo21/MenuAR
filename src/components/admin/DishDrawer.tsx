@@ -41,7 +41,7 @@ const DishDrawer: React.FC<DishDrawerProps> = ({ isOpen, onClose, dish, onSucces
     allergens: [] as string[],
     is_available: true,
     image_url: '',
-    ar_model_url: ''
+    model_url: ''
   });
 
   useEffect(() => {
@@ -61,7 +61,7 @@ const DishDrawer: React.FC<DishDrawerProps> = ({ isOpen, onClose, dish, onSucces
         allergens: dish.allergens || [],
         is_available: dish.is_available,
         image_url: dish.image_url,
-        ar_model_url: dish.ar_model_url || ''
+        model_url: dish.model_url || ''
       });
       setImageFile(null);
     } else {
@@ -74,7 +74,7 @@ const DishDrawer: React.FC<DishDrawerProps> = ({ isOpen, onClose, dish, onSucces
         allergens: [],
         is_available: true,
         image_url: '',
-        ar_model_url: ''
+        model_url: ''
       });
       setImageFile(null);
     }
@@ -109,7 +109,7 @@ const DishDrawer: React.FC<DishDrawerProps> = ({ isOpen, onClose, dish, onSucces
     try {
       const id = dish?.id || 'new-item';
       const modelUrl = await generateModel(imageFile, id);
-      setFormData(prev => ({ ...prev, ar_model_url: modelUrl }));
+      setFormData(prev => ({ ...prev, model_url: modelUrl }));
     } catch (error: any) {
       alert(error.message);
     }
@@ -210,7 +210,7 @@ const DishDrawer: React.FC<DishDrawerProps> = ({ isOpen, onClose, dish, onSucces
                 <Sparkles size={16} className="text-primary" />
                 <span className="text-[10px] font-bold text-primary uppercase tracking-widest">Tripo3D Model</span>
               </div>
-              {formData.ar_model_url && (
+              {formData.model_url && (
                 <span className="flex items-center gap-1 text-[10px] font-bold text-green-600 uppercase">
                   <Check size={12} /> Ready
                 </span>
@@ -235,7 +235,7 @@ const DishDrawer: React.FC<DishDrawerProps> = ({ isOpen, onClose, dish, onSucces
                 onClick={handleGenerate3D}
               >
                 <Sparkles size={16} />
-                {formData.ar_model_url ? 'Regenerate with Tripo3D' : '✨ Generate 3D Model with Tripo3D'}
+                {formData.model_url ? 'Regenerate with Tripo3D' : '✨ Generate 3D Model with Tripo3D'}
               </Button>
             )}
             
@@ -334,8 +334,8 @@ const DishDrawer: React.FC<DishDrawerProps> = ({ isOpen, onClose, dish, onSucces
             <Input 
               label="Manual GLB URL" 
               placeholder="https://..." 
-              value={formData.ar_model_url}
-              onChange={e => setFormData(prev => ({ ...prev, ar_model_url: e.target.value }))}
+              value={formData.model_url}
+              onChange={e => setFormData(prev => ({ ...prev, model_url: e.target.value }))}
             />
             <div className="flex items-center justify-between p-3 bg-surface-container rounded-xl">
               <span className="text-[10px] font-bold text-[#191C19] uppercase tracking-widest">Availability</span>

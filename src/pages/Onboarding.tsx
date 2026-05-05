@@ -63,7 +63,7 @@ const Onboarding: React.FC = () => {
     allergens: [] as string[],
     is_available: true,
     image_url: '',
-    ar_model_url: ''
+    model_url: ''
   });
   const [dishFile, setDishFile] = useState<File | null>(null);
   const [uploadingDish, setUploadingDish] = useState(false);
@@ -261,7 +261,7 @@ const Onboarding: React.FC = () => {
     if (!dishFile || !restaurant) return;
     try {
       const modelUrl = await generateModel(dishFile, 'new-onboarding-item');
-      setDishData(prev => ({ ...prev, ar_model_url: modelUrl }));
+      setDishData(prev => ({ ...prev, model_url: modelUrl }));
     } catch (err: any) {
       alert(err.message);
     }
@@ -307,7 +307,7 @@ const Onboarding: React.FC = () => {
           category_id: dishData.category_id,
           restaurant_id: restaurant.id,
           image_url: dishData.image_url || null,
-          ar_model_url: dishData.ar_model_url || null,
+          model_url: dishData.model_url || null,
           calories: dishData.calories || null,
           allergens: dishData.allergens,
           is_available: true
@@ -335,7 +335,7 @@ const Onboarding: React.FC = () => {
           allergens: [],
           is_available: true,
           image_url: '',
-          ar_model_url: ''
+          model_url: ''
         }));
         setDishFile(null);
       }
@@ -692,7 +692,7 @@ const Onboarding: React.FC = () => {
                             Skip 3D, add dish anyway
                           </Button>
                         </div>
-                      ) : dishData.ar_model_url ? (
+                      ) : dishData.model_url ? (
                         <div className="bg-green-50 rounded-2xl p-4 flex items-center gap-3 border border-green-100">
                           <div className="w-10 h-10 rounded-xl bg-green-500 flex items-center justify-center text-white">
                             <Check size={20} />
