@@ -6,13 +6,21 @@ const corsHeaders = {
 }
 
 serve(async (req) => {
+  console.log('Tripo proxy called:', req.method)
+  
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: corsHeaders })
   }
 
   try {
     const TRIPO_API_KEY = Deno.env.get('TRIPO_API_KEY')
-    const { action, taskId, imageBase64, fileType } = await req.json()
+    const body = await req.json()
+    console.log('Request body keys:', Object.keys(body))
+    console.log('Action:', body.action)
+    console.log('Has imageBase64:', !!body.imageBase64)
+    console.log('FileType:', body.fileType)
+
+    const { action, taskId, imageBase64, fileType } = body
 
     if (action === 'upload') {
       // Convert base64 to binary data
@@ -26,6 +34,7 @@ serve(async (req) => {
       const formData = new FormData()
       formData.append('file', blob, 'dish.' + fileType)
       
+      console.log('Calling Tripo upload API...')
       const uploadRes = await fetch('https://api.tripo3d.ai/v2/openapi/upload', {
         method: 'POST',
         headers: {
@@ -34,13 +43,16 @@ serve(async (req) => {
         body: formData
       })
       
+      console.log('Tripo upload status:', uploadRes.status)
       const uploadData = await uploadRes.json()
+      console.log('Tripo upload response:', JSON.stringify(uploadData))
       
       if (!uploadRes.ok) {
         throw new Error(uploadData.message || 'Upload failed')
       }
       
       // Create the 3D task
+      console.log('Creating Tripo 3D task...')
       const taskRes = await fetch('https://api.tripo3d.ai/v2/openapi/task', {
         method: 'POST',
         headers: {
@@ -57,6 +69,7 @@ serve(async (req) => {
       })
       
       const taskData = await taskRes.json()
+      console.log('Tripo task response:', JSON.stringify(taskData))
       
       return new Response(
         JSON.stringify({ task_id: taskData.data.task_id }),
@@ -80,6 +93,7 @@ serve(async (req) => {
     }
 
   } catch (err: any) {
+    console.error('Tripo proxy error:', err.message)
     return new Response(
       JSON.stringify({ error: err.message }),
       { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }

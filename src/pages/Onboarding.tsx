@@ -18,7 +18,7 @@ import { supabase } from '../lib/supabase';
 import Button from '../components/ui/Button';
 import Input from '../components/ui/Input';
 import { uploadFile } from '../services/storage';
-import { fetchCategories, insertCategory, insertMenuItem, insertTables } from '../services/db';
+import { insertCategory, insertTables } from '../services/db';
 import { useImageTo3D } from '../hooks/useImageTo3D';
 import { generateTableQRsZip, generateTableQRsPDF } from '../utils/qrGenerator';
 import type { MenuItem, Category } from '../types';
@@ -68,6 +68,7 @@ const Onboarding: React.FC = () => {
   const [dishFile, setDishFile] = useState<File | null>(null);
   const [uploadingDish, setUploadingDish] = useState(false);
   const [dishesAdded, setDishesAdded] = useState<MenuItem[]>([]);
+  const [dishError, setDishError] = useState<string | null>(null);
   const { generateModel, generating, progress: genProgress, status: genStatus } = useImageTo3D();
 
   // Step 4 State: Tables
@@ -96,19 +97,29 @@ const Onboarding: React.FC = () => {
   }, [restaurant?.id, authLoading, navigate]);
 
   useEffect(() => {
-    if (step === 3 && restaurant?.id && categories.length === 0) {
-      loadCategories();
+    if (step === 3 && restaurant?.id) {
+      const fetchCats = async () => {
+        const { data } = await supabase
+          .from('categories')
+          .select('*')
+          .eq('restaurant_id', restaurant.id)
+          .order('sort_order', { ascending: true });
+        
+        if (data) {
+          // Deduplicate by id just in case
+          const unique = data.filter(
+            (cat, index, self) =>
+              index === self.findIndex(c => c.id === cat.id)
+          );
+          setCategories(unique);
+          if (unique.length > 0 && !dishData.category_id) {
+            setDishData(prev => ({ ...prev, category_id: unique[0].id }));
+          }
+        }
+      };
+      fetchCats();
     }
   }, [step, restaurant?.id]);
-
-  const loadCategories = async () => {
-    if (!restaurant?.id) return;
-    const cats = await fetchCategories(restaurant.id);
-    setCategories(cats);
-    if (cats.length > 0 && !dishData.category_id) {
-      setDishData(prev => ({ ...prev, category_id: cats[0].id }));
-    }
-  };
 
   // Auth Protection
   if (authLoading) return <div className="min-h-screen flex items-center justify-center"><Loader2 className="animate-spin text-primary" /></div>;
@@ -221,12 +232,6 @@ const Onboarding: React.FC = () => {
           sort_order: i
         });
       }
-      // Re-fetch categories to get IDs for Step 3
-      const cats = await fetchCategories(restaurant.id);
-      setCategories(cats);
-      if (cats.length > 0) {
-        setDishData(prev => ({ ...prev, category_id: cats[0].id }));
-      }
       setStep(3);
     } catch (err) {
       alert('Failed to save categories');
@@ -263,34 +268,63 @@ const Onboarding: React.FC = () => {
   };
 
   const handleAddDish = async () => {
+    setDishError(null);
     console.log('Add dish clicked', { dishData, restaurantId: restaurant?.id });
     
-    if (!restaurant?.id) return;
+    if (!restaurant?.id) {
+      setDishError('Restaurant not found. Please log in again.');
+      return;
+    }
     
     if (!dishData.name.trim()) {
-      alert('Please enter a dish name');
+      setDishError('Please enter a dish name');
       return;
     }
 
     if (!dishData.category_id) {
-      alert('Please select a category');
+      setDishError('Please select a category');
       return;
     }
 
     if (!dishData.price || isNaN(dishData.price)) {
-      alert('Please enter a valid price');
+      setDishError('Please enter a valid price');
       return;
     }
 
     setLoading(true);
     try {
-      const newItem = await insertMenuItem({
+      console.log('Inserting dish:', {
         ...dishData,
         restaurant_id: restaurant.id
       });
+
+      const { data, error } = await supabase
+        .from('menu_items')
+        .insert({
+          name: dishData.name.trim(),
+          description: dishData.description?.trim(),
+          price: dishData.price,
+          category_id: dishData.category_id,
+          restaurant_id: restaurant.id,
+          image_url: dishData.image_url || null,
+          ar_model_url: dishData.ar_model_url || null,
+          calories: dishData.calories || null,
+          allergens: dishData.allergens,
+          is_available: true
+        })
+        .select()
+        .single();
       
-      if (newItem) {
-        setDishesAdded(prev => [...prev, newItem]);
+      if (error) {
+        console.error('Dish insert error:', error);
+        setDishError('Failed to add dish: ' + error.message);
+        return;
+      }
+      
+      console.log('Dish added successfully:', data);
+      
+      if (data) {
+        setDishesAdded(prev => [...prev, data as MenuItem]);
         // Reset form for "Add another"
         setDishData(prev => ({
           ...prev,
@@ -306,8 +340,8 @@ const Onboarding: React.FC = () => {
         setDishFile(null);
       }
     } catch (err: any) {
-      console.error('Failed to add dish:', err);
-      alert('Failed to add dish: ' + (err.message || 'Unknown error'));
+      console.error('Unexpected dish error:', err);
+      setDishError(err.message || 'Something went wrong');
     } finally {
       setLoading(false);
     }
@@ -635,25 +669,43 @@ const Onboarding: React.FC = () => {
                       {generating ? (
                         <div className="bg-primary/5 rounded-2xl p-4 space-y-3 border border-primary/10">
                           <div className="h-1.5 w-full bg-primary/10 rounded-full overflow-hidden">
-                            <div className="h-full bg-primary transition-all duration-500" style={{ width: `${genProgress}%` }} />
+                            <div 
+                              className="h-full bg-primary transition-all duration-500 ease-out" 
+                              style={{ width: `${genProgress}%` }}
+                            />
                           </div>
-                          <p className="text-[10px] font-bold text-primary uppercase text-center">{genStatus}</p>
+                          <div className="flex justify-between items-center text-[10px] font-bold text-primary uppercase tracking-widest">
+                            <span>{genStatus}</span>
+                            <span>{genProgress}%</span>
+                          </div>
+                        </div>
+                      ) : genStatus === 'failed' ? (
+                        <div className="space-y-4">
+                          <div className="bg-red-50 text-red-600 p-4 rounded-2xl text-xs border border-red-100">
+                            3D generation failed. You can still add this dish and generate the 3D model later from your Menu Manager dashboard.
+                          </div>
+                          <Button 
+                            variant="secondary" 
+                            className="w-full border-green-600 text-green-600 hover:bg-green-50"
+                            onClick={handleAddDish}
+                          >
+                            Skip 3D, add dish anyway
+                          </Button>
                         </div>
                       ) : dishData.ar_model_url ? (
-                        <div className="bg-green-50 border border-green-100 p-4 rounded-2xl flex items-center justify-between">
-                          <div className="flex items-center gap-3">
-                            <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white">
-                              <Check size={18} />
-                            </div>
-                            <span className="text-xs font-bold text-green-700 uppercase tracking-wider">3D Model Ready</span>
+                        <div className="bg-green-50 rounded-2xl p-4 flex items-center gap-3 border border-green-100">
+                          <div className="w-10 h-10 rounded-xl bg-green-500 flex items-center justify-center text-white">
+                            <Check size={20} />
                           </div>
-                          <Button variant="secondary" size="sm" onClick={handleGenerate3D} className="h-8 border-green-200 text-green-700 hover:bg-green-100">Regenerate</Button>
+                          <div>
+                            <p className="text-xs font-bold text-green-800">3D Model Ready!</p>
+                            <p className="text-[10px] text-green-600">This dish will appear in AR.</p>
+                          </div>
                         </div>
                       ) : (
                         <Button 
                           onClick={handleGenerate3D}
-                          variant="secondary"
-                          className="w-full h-12 border-primary text-primary hover:bg-primary/5 gap-2"
+                          className="w-full h-14 bg-primary text-white font-bold rounded-[20px] shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2"
                         >
                           <Sparkles size={18} />
                           ✨ Generate 3D Model with Tripo3D
@@ -663,7 +715,12 @@ const Onboarding: React.FC = () => {
                   )}
                 </div>
 
-                <div className="space-y-4">
+                  {dishError && (
+                    <div className="bg-red-50 text-red-600 p-4 rounded-xl text-sm border border-red-100 animate-in fade-in slide-in-from-top-2">
+                      {dishError}
+                    </div>
+                  )}
+
                   <Button 
                     onClick={handleAddDish}
                     className="w-full h-14 font-bold"
@@ -693,7 +750,6 @@ const Onboarding: React.FC = () => {
                     </div>
                   )}
                 </div>
-              </div>
             )}
 
             {/* STEP 4: Tables */}
