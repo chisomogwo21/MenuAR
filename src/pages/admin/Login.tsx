@@ -31,6 +31,21 @@ const Login: React.FC = () => {
     }
 
     // Success - AppContext listener will handle isAuthenticated and userRole
+    // Apply brand color immediately
+    const { data: userRow } = await supabase
+      .from('users')
+      .select('restaurants(primary_color)')
+      .eq('email', email)
+      .single();
+    
+    if (userRow?.restaurants) {
+      const rest = Array.isArray(userRow.restaurants) ? userRow.restaurants[0] : userRow.restaurants;
+      document.documentElement.style.setProperty(
+        '--color-primary', 
+        rest.primary_color || '#1A5C3A'
+      );
+    }
+
     navigate('/admin/dashboard');
   };
 

@@ -63,7 +63,7 @@ const Restaurants: React.FC = () => {
     if (newRestaurant && formData.admin_email) {
       // 2. Create Admin Auth User via Supabase Edge Function or direct API if we had service role
       // For this phase, we'll simulate the admin creation since we don't have the service_role key
-      alert(`Restaurant added! Admin account for ${formData.admin_email} needs to be created via Supabase backend.`);
+      console.error(`Restaurant added! Admin account for ${formData.admin_email} needs to be created via Supabase backend.`);
     }
 
     setFormData({ name: '', slug: '', primary_color: '#1A5C3A', admin_email: '' });
@@ -76,7 +76,7 @@ const Restaurants: React.FC = () => {
     // Assuming we add an 'is_active' field to restaurants
     // await updateRestaurant(id, { is_active: !currentStatus });
     // await loadRestaurants();
-    alert('Toggle status functionality coming soon!');
+    console.error('Toggle status functionality coming soon!');
   };
 
   if (authLoading) return <div className="min-h-screen bg-background flex items-center justify-center"><Loader2 className="animate-spin text-primary w-8 h-8" /></div>;

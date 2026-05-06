@@ -146,7 +146,7 @@ const AIAssistant: React.FC = () => {
                         <button
                           onClick={() => {
                             addToCart({ ...dish, quantity: 1 });
-                            alert(`Added ${dish.name} to order!`);
+                            console.error(`Added ${dish.name} to order!`);
                           }}
                           className="mt-2 w-full py-1.5 bg-primary/5 text-primary text-[10px] font-bold uppercase tracking-widest rounded-lg flex items-center justify-center gap-1 hover:bg-primary/10 transition-colors"
                         >

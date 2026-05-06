@@ -72,7 +72,7 @@ const DishDetail: React.FC = () => {
   const handleAddToCart = () => {
     addToCart({ ...dish, quantity: 1 });
     // In a real app we'd use a toast
-    alert(`Added ${dish.name} to order!`);
+    console.error(`Added ${dish.name} to order!`);
   };
 
   return (

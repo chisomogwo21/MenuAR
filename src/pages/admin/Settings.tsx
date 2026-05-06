@@ -56,7 +56,7 @@ const Settings: React.FC = () => {
       const url = await uploadFile(bucket, fileName, file);
       setFormData((prev: typeof formData) => ({ ...prev, [type === 'logo' ? 'logo_url' : 'banner_url']: url }));
     } catch (error) {
-      alert('Upload failed');
+      console.error('Upload failed');
     } finally {
       if (type === 'logo') setUploadingLogo(false);
       else setUploadingHero(false);

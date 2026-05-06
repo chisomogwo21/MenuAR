@@ -160,6 +160,8 @@ const Signup: React.FC = () => {
       //   }
       // });
 
+      document.documentElement.style.setProperty('--color-primary', restaurant.primary_color || '#1A5C3A');
+
       navigate('/onboarding');
     } catch (err: any) {
       console.error(err);

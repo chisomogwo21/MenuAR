@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
 import type { CartItem, Order, Restaurant, OrderStatus } from '../types';
 import { supabase } from '../lib/supabase';
-import { fetchRestaurantById } from '../services/db';
+
 
 interface AppContextType {
   // Cart
@@ -45,46 +45,59 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
 
   // Check session on mount
   useEffect(() => {
-    const checkUser = async (session: any) => {
-      setIsAuthenticated(!!session);
-      if (session?.user) {
-        // Fetch user role and restaurant_id from users table
-        let { data: userData } = await supabase
+    const initializeApp = async (session: any) => {
+      try {
+        const authUser = session.user;
+        if (!authUser) return;
+        
+        const { data: userRow } = await supabase
           .from('users')
-          .select('role, restaurant_id')
-          .eq('id', session.user.id)
+          .select('*, restaurants(*)')
+          .eq('email', authUser.email)
           .single();
         
-        // Fallback to email if ID lookup fails
-        if (!userData && session.user.email) {
-          const { data: emailData } = await supabase
-            .from('users')
-            .select('role, restaurant_id')
-            .eq('email', session.user.email)
-            .single();
-          userData = emailData;
+        if (!userRow) {
+          console.error('No user row found for', authUser.email);
+          setAuthLoading(false);
+          return;
         }
-        
-        if (userData) {
-          setUserRole(userData.role);
-          if (userData.restaurant_id) {
-            const rest = await fetchRestaurantById(userData.restaurant_id);
-            if (rest) setRestaurant(rest);
-          }
+
+        setUserRole(userRow.role);
+
+        if (userRow.restaurant_id && userRow.restaurants) {
+          const rest = Array.isArray(userRow.restaurants) ? userRow.restaurants[0] : userRow.restaurants;
+          setRestaurant(rest);
+          
+          document.documentElement.style.setProperty('--color-primary', rest.primary_color || '#1A5C3A');
         }
-      } else {
-        setUserRole(null);
-        setRestaurant(null);
+
+        setIsAuthenticated(true);
+      } catch (err) {
+        console.error('App init error:', err);
+      } finally {
+        setAuthLoading(false);
       }
-      setAuthLoading(false);
     };
 
     supabase.auth.getSession().then(({ data }) => {
-      checkUser(data.session);
+      if (data.session) {
+        initializeApp(data.session);
+      } else {
+        setIsAuthenticated(false);
+        setAuthLoading(false);
+      }
     });
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      checkUser(session);
+      if (session) {
+        initializeApp(session);
+      } else {
+        setIsAuthenticated(false);
+        setRestaurant(null);
+        setUserRole(null);
+        document.documentElement.style.setProperty('--color-primary', '#1A5C3A');
+        setAuthLoading(false);
+      }
     });
 
     return () => subscription.unsubscribe();

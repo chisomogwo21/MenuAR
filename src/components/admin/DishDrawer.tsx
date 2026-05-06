@@ -93,7 +93,7 @@ const DishDrawer: React.FC<DishDrawerProps> = ({ isOpen, onClose, dish, onSucces
       const url = await uploadFile('dish-photos', fileName, file);
       setFormData(prev => ({ ...prev, photo_url: url }));
     } catch (error) {
-      alert('Upload failed');
+      console.error('Upload failed');
     } finally {
       setUploading(false);
     }
@@ -102,7 +102,7 @@ const DishDrawer: React.FC<DishDrawerProps> = ({ isOpen, onClose, dish, onSucces
   const handleGenerate3D = async () => {
     if (!imageFile || !restaurant) {
       if (!imageFile && formData.photo_url) {
-        alert("Please re-upload the photo to generate a 3D model with Tripo3D (requires original file).");
+        console.error("Please re-upload the photo to generate a 3D model with Tripo3D (requires original file).");
       }
       return;
     }
@@ -138,7 +138,7 @@ const DishDrawer: React.FC<DishDrawerProps> = ({ isOpen, onClose, dish, onSucces
       onSuccess();
       onClose();
     } catch (error) {
-      alert('Save failed');
+      console.error('Save failed');
     } finally {
       setLoading(false);
     }
@@ -153,7 +153,7 @@ const DishDrawer: React.FC<DishDrawerProps> = ({ isOpen, onClose, dish, onSucces
         onSuccess();
         onClose();
       } catch (error) {
-        alert('Delete failed');
+        console.error('Delete failed');
       } finally {
         setLoading(false);
       }

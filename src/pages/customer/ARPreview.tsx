@@ -36,7 +36,7 @@ const ARPreview: React.FC = () => {
 
   const handleAddToCart = () => {
     addToCart({ ...dish, quantity: 1 });
-    alert(`Added ${dish.name} to order!`);
+    console.error(`Added ${dish.name} to order!`);
   };
 
   return (

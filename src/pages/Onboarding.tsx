@@ -180,12 +180,12 @@ const Onboarding: React.FC = () => {
     if (!restaurant?.id) return;
     
     if (!profileData.name.trim()) {
-      alert('Please enter your restaurant name');
+      console.error('Please enter your restaurant name');
       return;
     }
 
     if (slugStatus === 'taken') {
-      alert('This URL is already taken. Please choose another.');
+      console.error('This URL is already taken. Please choose another.');
       return;
     }
 
@@ -207,7 +207,7 @@ const Onboarding: React.FC = () => {
       setStep(2);
     } catch (err: any) {
       console.error('Failed to save profile:', err);
-      alert('Failed to save profile: ' + err.message);
+      console.error('Failed to save profile: ' + err.message);
     } finally {
       setLoading(false);
     }
@@ -234,7 +234,7 @@ const Onboarding: React.FC = () => {
       }
       setStep(3);
     } catch (err) {
-      alert('Failed to save categories');
+      console.error('Failed to save categories');
     } finally {
       setLoading(false);
     }
@@ -251,7 +251,7 @@ const Onboarding: React.FC = () => {
       const url = await uploadFile('dish-photos', fileName, file);
       setDishData(prev => ({ ...prev, photo_url: url }));
     } catch (err) {
-      alert('Photo upload failed');
+      console.error('Photo upload failed');
     } finally {
       setUploadingDish(false);
     }
@@ -362,7 +362,7 @@ const Onboarding: React.FC = () => {
       await insertTables(tables);
       setQrDone(true);
     } catch (err) {
-      alert('Failed to generate tables');
+      console.error('Failed to generate tables');
     } finally {
       setGeneratingQR(false);
     }

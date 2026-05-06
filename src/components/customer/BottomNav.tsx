@@ -28,7 +28,7 @@ const BottomNav: React.FC = () => {
         if (!lastViewedDishId) {
           e.preventDefault();
           // In a real app we'd use a toast library here
-          alert("View a dish first to see it in AR!");
+          console.error("View a dish first to see it in AR!");
         }
       }
     },

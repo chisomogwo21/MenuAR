@@ -69,7 +69,7 @@ const MenuManager: React.FC = () => {
       setItems(prev => prev.map(item =>
         item.id === id ? { ...item, is_available: currentStatus } : item
       ));
-      alert("Failed to update availability");
+      console.error("Failed to update availability");
     }
   };
 

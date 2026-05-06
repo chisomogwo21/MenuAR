@@ -46,7 +46,7 @@ const Cart: React.FC = () => {
     });
 
     if (!orderData) {
-      alert("Failed to place order. Please try again.");
+      console.error("Failed to place order. Please try again.");
       return;
     }
 
@@ -59,7 +59,7 @@ const Cart: React.FC = () => {
 
     const success = await createOrderItems(orderItems);
     if (!success) {
-      alert("Failed to save order items, please ask server for help.");
+      console.error("Failed to save order items, please ask server for help.");
     }
     
     // Clear cart and redirect
