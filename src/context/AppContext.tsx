@@ -23,6 +23,8 @@ interface AppContextType {
   // Auth
   isAuthenticated: boolean;
   setIsAuthenticated: (val: boolean) => void;
+  clearSession: () => void;
+  initializeApp: (session: any) => Promise<void>;
   authLoading: boolean;
   userRole: string | null;
   // AI Assistant
@@ -43,42 +45,51 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
 
   const [userRole, setUserRole] = useState<string | null>(null);
 
+  const clearSession = () => {
+    setRestaurant(null);
+    setUserRole(null);
+    setIsAuthenticated(false);
+    setCart([]);
+    setOrders([]);
+    document.documentElement.style.setProperty('--color-primary', '#1A5C3A');
+  };
+
+  const initializeApp = async (session: any) => {
+    try {
+      const authUser = session.user;
+      if (!authUser) return;
+      
+      const { data: userRow } = await supabase
+        .from('users')
+        .select('*, restaurants(*)')
+        .eq('email', authUser.email)
+        .single();
+      
+      if (!userRow) {
+        console.error('No user row found for', authUser.email);
+        setAuthLoading(false);
+        return;
+      }
+
+      setUserRole(userRow.role);
+
+      if (userRow.restaurant_id && userRow.restaurants) {
+        const rest = Array.isArray(userRow.restaurants) ? userRow.restaurants[0] : userRow.restaurants;
+        setRestaurant(rest);
+        
+        document.documentElement.style.setProperty('--color-primary', rest.primary_color || '#1A5C3A');
+      }
+
+      setIsAuthenticated(true);
+    } catch (err) {
+      console.error('App init error:', err);
+    } finally {
+      setAuthLoading(false);
+    }
+  };
+
   // Check session on mount
   useEffect(() => {
-    const initializeApp = async (session: any) => {
-      try {
-        const authUser = session.user;
-        if (!authUser) return;
-        
-        const { data: userRow } = await supabase
-          .from('users')
-          .select('*, restaurants(*)')
-          .eq('email', authUser.email)
-          .single();
-        
-        if (!userRow) {
-          console.error('No user row found for', authUser.email);
-          setAuthLoading(false);
-          return;
-        }
-
-        setUserRole(userRow.role);
-
-        if (userRow.restaurant_id && userRow.restaurants) {
-          const rest = Array.isArray(userRow.restaurants) ? userRow.restaurants[0] : userRow.restaurants;
-          setRestaurant(rest);
-          
-          document.documentElement.style.setProperty('--color-primary', rest.primary_color || '#1A5C3A');
-        }
-
-        setIsAuthenticated(true);
-      } catch (err) {
-        console.error('App init error:', err);
-      } finally {
-        setAuthLoading(false);
-      }
-    };
-
     supabase.auth.getSession().then(({ data }) => {
       if (data.session) {
         initializeApp(data.session);
@@ -164,6 +175,8 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
       setLastViewedDishId,
       isAuthenticated,
       setIsAuthenticated,
+      clearSession,
+      initializeApp,
       authLoading,
       userRole,
       isAIAssistantOpen,

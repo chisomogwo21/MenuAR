@@ -5,6 +5,7 @@ import Button from '../components/ui/Button';
 import Input from '../components/ui/Input';
 import { supabase } from '../lib/supabase';
 import { formatPrice } from '../utils/formatters';
+import { useAppContext } from '../context/AppContext';
 
 const TIERS = [
   {
@@ -46,6 +47,7 @@ const TIERS = [
 
 const Signup: React.FC = () => {
   const navigate = useNavigate();
+  const { clearSession, initializeApp } = useAppContext();
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [selectedTier, setSelectedTier] = useState('growth');
@@ -77,6 +79,24 @@ const Signup: React.FC = () => {
     setLoading(true);
 
     try {
+      // Clear any cached session data
+      localStorage.removeItem('menuarRestaurant');
+      localStorage.removeItem('menuarColor');
+      localStorage.removeItem('menuarOnboardingComplete');
+      sessionStorage.clear();
+
+      // Clear any existing session first
+      await supabase.auth.signOut();
+
+      // Reset CSS to default
+      document.documentElement.style.setProperty('--color-primary', '#1A5C3A');
+
+      // Clear AppContext
+      clearSession();
+
+      // Small delay to ensure cleanup
+      await new Promise(r => setTimeout(r, 500));
+
       // 1. Sign up user
       const { data: authData, error: authError } = await supabase.auth.signUp({
         email: formData.email,
@@ -161,6 +181,11 @@ const Signup: React.FC = () => {
       // });
 
       document.documentElement.style.setProperty('--color-primary', restaurant.primary_color || '#1A5C3A');
+
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session) {
+        await initializeApp(session);
+      }
 
       navigate('/onboarding');
     } catch (err: any) {

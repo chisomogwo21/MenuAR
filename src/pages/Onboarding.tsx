@@ -77,22 +77,60 @@ const Onboarding: React.FC = () => {
   const [qrDone, setQrDone] = useState(false);
 
   useEffect(() => {
-    if (restaurant) {
-      setProfileData({
-        name: restaurant.name || '',
-        slug: restaurant.slug || '',
-        logo_url: restaurant.logo_url || '',
-        primary_color: restaurant.primary_color || '#1A5C3A'
-      });
-      // Apply brand color to UI
-      document.documentElement.style.setProperty('--color-primary', restaurant.primary_color || '#1A5C3A');
-    }
-  }, [restaurant]);
-
-  useEffect(() => {
-    if (!authLoading && !restaurant?.id) {
-      console.error('No restaurant ID in context');
-      navigate('/admin/login');
+    const initOnboarding = async () => {
+      if (!restaurant?.id) {
+        navigate('/admin/login');
+        return;
+      }
+      
+      // Fetch fresh restaurant data from Supabase
+      // Do NOT use AppContext restaurant data here
+      // Always fetch directly from DB
+      const { data: freshRestaurant } = await supabase
+        .from('restaurants')
+        .select('*')
+        .eq('id', restaurant.id)
+        .single();
+      
+      if (!freshRestaurant) return;
+      
+      // Only pre-fill if data actually exists
+      setProfileData(prev => ({
+        ...prev,
+        name: freshRestaurant.name || '',
+        slug: freshRestaurant.slug || ''
+      }));
+      
+      // Only set logo if one exists in DB
+      if (freshRestaurant.logo_url) {
+        setProfileData(prev => ({ ...prev, logo_url: freshRestaurant.logo_url }));
+      } else {
+        setProfileData(prev => ({ ...prev, logo_url: '' })); // Start fresh
+      }
+      
+      // Only set color if different from default
+      if (freshRestaurant.primary_color && freshRestaurant.primary_color !== '#1A5C3A') {
+        setProfileData(prev => ({ ...prev, primary_color: freshRestaurant.primary_color }));
+        document.documentElement.style.setProperty(
+          '--color-primary', 
+          freshRestaurant.primary_color
+        );
+      } else {
+        // Reset to default for new restaurants
+        setProfileData(prev => ({ ...prev, primary_color: '#1A5C3A' }));
+        document.documentElement.style.setProperty(
+          '--color-primary', '#1A5C3A'
+        );
+      }
+    };
+    
+    if (!authLoading) {
+      if (restaurant?.id) {
+        initOnboarding();
+      } else {
+        console.error('No restaurant ID in context');
+        navigate('/admin/login');
+      }
     }
   }, [restaurant?.id, authLoading, navigate]);
 
